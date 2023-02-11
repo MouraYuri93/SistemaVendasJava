@@ -1,0 +1,3 @@
+#Iniciando um projeto em JAVA
+
+Nele será criado um sistema de vendas com diversas funcionalidades...
