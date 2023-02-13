@@ -67,6 +67,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuArquivosProdutos.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuArquivosProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/produ48.png"))); // NOI18N
         mnuArquivosProdutos.setText("Produtos");
+        mnuArquivosProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuArquivosProdutosActionPerformed(evt);
+            }
+        });
         mnuArquivosSair.add(mnuArquivosProdutos);
 
         mnuArquivosUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -167,11 +172,18 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuMoviNovaVendaActionPerformed
 
     private void mnuArquivosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosUsuariosActionPerformed
-        frmUsuarios mUsuarios = new frmUsuarios ();
-        mUsuarios.setDados(msDados);
-        dpnDesk.add(mUsuarios);
-        mUsuarios.show();
+        frmUsuarios msUsuarios = new frmUsuarios();
+        msUsuarios.setDados(msDados);
+        dpnDesk.add(msUsuarios);
+        msUsuarios.show();
     }//GEN-LAST:event_mnuArquivosUsuariosActionPerformed
+
+    private void mnuArquivosProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosProdutosActionPerformed
+        frmProdutos mProdutos = new frmProdutos();
+        mProdutos.setDados(msDados);
+        dpnDesk.add(mProdutos);
+        mProdutos.show();
+    }//GEN-LAST:event_mnuArquivosProdutosActionPerformed
 
     public static void main(String args[]) {
 

@@ -3,22 +3,57 @@ package classes;
 public class Dados {
     
     private int maxUsu = 50;
+    private int maxPro = 100;
     private Usuario msUsuarios [] = new Usuario [maxUsu];
+    private Produto msProdutos [] = new Produto [maxPro];
     private int conUsu = 0;
+    private int conPro = 0;
     
     public Dados () {
         
-        Usuario mUsuario = new Usuario("user", "Yuri", "Moura", "123", 1 );
+        Usuario mUsuario;
+        mUsuario = new Usuario("user", "Yuri", "Moura", "123", 1 );
         msUsuarios [conUsu] = mUsuario;
         conUsu++;
+        
+        mUsuario = new Usuario("tania", "Tania", "Maria", "123", 2 );
+        msUsuarios [conUsu] = mUsuario;
+        conUsu++;
+        
+        mUsuario = new Usuario("teste1", "Teste1", "Teste1", "123", 2 );
+        msUsuarios [conUsu] = mUsuario;
+        conUsu++;
+        
+        Produto mProduto;
+        mProduto = new Produto("1", "Arroz", 4, 0, "Arroz branco");
+        msProdutos[conPro] = mProduto;
+        conPro++;
+        
+        mProduto = new Produto("2", "Feijão", 7, 1, "Feijão preto");
+        msProdutos[conPro] = mProduto;
+        conPro++;
+        
+        mProduto = new Produto("3", "Farinha", 3, 0, "Farinha Branca");
+        msProdutos[conPro] = mProduto;
+        conPro++;
+        
+        
     }
     
-    public int numerUsuarios() {
+    public int numeroUsuarios() {
         return conUsu;
+    }
+    
+    public int numeroProdutos() {
+        return conPro;
     }
     
     public Usuario[] getUsuarios() {
         return msUsuarios;
+    }
+    
+    public Produto[] getProdutos() {
+        return msProdutos;
     }
     
 public boolean validarUsuario (String usuario, String senha) {
@@ -45,18 +80,68 @@ public int posicaoUsuario(String usuario) {
         return -1;
  }
 
-public String adicionarUsuario (Usuario msUsuario) {
+public int posicaoProduto(String produto) {
+        
+         for (int i = 0; i < conPro; i++) {
+            if (msProdutos[i].getIdProduto().equals(produto) ) {
+                return i;
+                    }
+          }
+        
+        return -1;
+ }
+
+public String adicionarUsuario (Usuario mUsuario) {
     if(conUsu == maxUsu) {
         return "Não é possivel cadastar mais usuario, limite maximo atingido";
     }
-    msUsuarios [conUsu] = msUsuario;
+    msUsuarios [conUsu] = mUsuario;
     conUsu++;
-    return "Usuario cadastrado com sucesso!";
+    return "Usuário cadastrado com sucesso!";
+}
+
+public String adicionarProduto (Produto mProduto) {
+    if(conPro == maxPro) {
+        return "Não é possivel cadastar mais produtos, limite maximo atingido";
+    }
+    msProdutos [conPro] = mProduto;
+    conPro++;
+    return "Produto cadastrado com sucesso!";
 }
    
+public String editarUsuario (Usuario mUsuario, int pos) {
+    msUsuarios [pos].setNome(mUsuario.getNome());
+    msUsuarios [pos].setSobreNome(mUsuario.getSobreNome());
+    msUsuarios [pos].setSenha(mUsuario.getSenha());
+    msUsuarios [pos].setPerfil(mUsuario.getPerfil());
+    
+    return "Usuário editado com sucesso!";
+}
 
+public String editarPoduto (Produto mpProduto, int pos) {
+    msProdutos [pos].setDescricao(mpProduto.getDescricao());
+    msProdutos [pos].setPreco(mpProduto.getPreco());
+    msProdutos [pos].setImposto(mpProduto.getImposto());
+    msProdutos [pos].setAnotacao(mpProduto.getAnotacao());
+    
+    return "Produto editado com sucesso!";
+}
 
+public String deletarUsuario(int pos) {
+    for(int i = pos; i < conUsu -1; i++) {
+        msUsuarios[i] = msUsuarios[i + 1];
+    }
+    conUsu--;
+    return "Usuário deletado com sucesso!" ;
+}
 
+public String deletarProduto(int pos) {
+    for(int i = pos; i < conPro -1; i++) {
+        msProdutos[i] = msProdutos[i + 1];
+    }
+    conPro--;
+    return "Produto deletado com sucesso!" ;
+}
 
 
 
