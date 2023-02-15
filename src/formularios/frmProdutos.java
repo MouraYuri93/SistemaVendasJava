@@ -2,7 +2,6 @@ package formularios;
 
 import classes.Dados;
 import classes.Produto;
-import classes.Usuario;
 import classes.Utilidades;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +25,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        usuarioIdUsuario = new javax.swing.JLabel();
+        usuarioIdProduto = new javax.swing.JLabel();
         usuarioSobrenome = new javax.swing.JLabel();
         usuarioNome = new javax.swing.JLabel();
         usuarioSenha = new javax.swing.JLabel();
@@ -75,8 +74,8 @@ public class frmProdutos extends javax.swing.JInternalFrame {
             }
         });
 
-        usuarioIdUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        usuarioIdUsuario.setText("ID Produto:");
+        usuarioIdProduto.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        usuarioIdProduto.setText("ID Produto:");
 
         usuarioSobrenome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         usuarioSobrenome.setText("Preço:");
@@ -244,7 +243,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(usuarioNome)
                             .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usuarioIdUsuario)
+                            .addComponent(usuarioIdProduto)
                             .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +299,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(usuarioIdUsuario)
+                                    .addComponent(usuarioIdProduto)
                                     .addComponent(usuarioPerfil))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -415,26 +414,25 @@ public class frmProdutos extends javax.swing.JInternalFrame {
         }
         
         if(cmbImposto.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um valor");
+            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um valor de imposto");
             cmbImposto.requestFocusInWindow();
             return;
         }
-        
-        
+                        
         if(txtPreco.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, "Favor inserir um valor");
+            JOptionPane.showMessageDialog(rootPane, "Favor inserir um preço");
             txtPreco.requestFocusInWindow();
             return;
         }
         
-        if(!Utilidades.isNumeric(txtPreco.getText())) {
+        if ( !Utilidades.isNumeric(txtPreco.getText())) {
             JOptionPane.showMessageDialog(rootPane, "Favor inserir somente numeros");
             txtPreco.requestFocusInWindow();
             return;
         }
         
-        int preco = Integer.parseInt(txtPreco.getText()) ;
-        if (preco <= 0) {
+        int preco = Integer.parseInt(txtPreco.getText());
+        if (preco <=0) {
             JOptionPane.showMessageDialog(rootPane, "Favor inserir numeros acima de zero");
             txtPreco.requestFocusInWindow();
             return;
@@ -446,7 +444,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
             return;
         }
         
-       int pos =msDados.posicaoUsuario(txtIdProduto.getText());
+       int pos = msDados.posicaoProduto(txtIdProduto.getText());
        if(novo) {
            if(pos != -1) {
                 JOptionPane.showMessageDialog(rootPane, "Produto já existe");
@@ -454,17 +452,17 @@ public class frmProdutos extends javax.swing.JInternalFrame {
                 return;
            }
        } else {
-           if(pos == 1) {
+           if(pos == -1) {
                 JOptionPane.showMessageDialog(rootPane, "Produto disponível");
                 txtIdProduto.requestFocusInWindow();
                 return;
            }
        }
        
-       
         Produto mProduto = new Produto(
                 txtIdProduto.getText(), 
-                txtDescricao.getText(), preco, 
+                txtDescricao.getText(), 
+                preco, 
                 cmbImposto.getSelectedIndex(), 
                 txtAnotacoes.getText());                           
        String msg;
@@ -535,7 +533,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPrimeiroActionPerformed
 
     private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
-        proAtual = msDados.numeroUsuarios() -1;
+        proAtual = msDados.numeroProdutos()-1;
         mostrarRegistro();
     }//GEN-LAST:event_btnUltimoActionPerformed
 
@@ -576,11 +574,11 @@ public class frmProdutos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void mostrarRegistro() {
-        txtIdProduto.setText(msDados.getProdutos()[ proAtual].getIdProduto());
-        txtDescricao.setText(msDados.getProdutos()[ proAtual].getDescricao());
-        txtPreco.setText(" " + msDados.getProdutos()[ proAtual].getPreco());
+        txtIdProduto.setText(msDados.getProdutos()[proAtual].getIdProduto());
+        txtDescricao.setText(msDados.getProdutos()[proAtual].getDescricao());
+        txtPreco.setText(" " + msDados.getProdutos()[proAtual].getPreco());
         txtAnotacoes.setText(msDados.getProdutos()[proAtual].getAnotacao());
-        cmbImposto.setSelectedIndex(msDados.getProdutos()[ proAtual].getImposto());
+        cmbImposto.setSelectedIndex(msDados.getProdutos()[proAtual].getImposto());
     }
     
     private void preencherTabela() {
@@ -637,7 +635,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtIdProduto;
     private javax.swing.JTextField txtPreco;
-    private javax.swing.JLabel usuarioIdUsuario;
+    private javax.swing.JLabel usuarioIdProduto;
     private javax.swing.JLabel usuarioNome;
     private javax.swing.JLabel usuarioPerfil;
     private javax.swing.JLabel usuarioSenha;

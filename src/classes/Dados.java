@@ -4,39 +4,108 @@ public class Dados {
     
     private int maxUsu = 50;
     private int maxPro = 100;
+    private int maxCli = 100;
     private Usuario msUsuarios [] = new Usuario [maxUsu];
     private Produto msProdutos [] = new Produto [maxPro];
+    private Cliente msClientes [] = new Cliente [maxCli];
     private int conUsu = 0;
     private int conPro = 0;
+    private int conCli = 0;
     
     public Dados () {
         
         Usuario mUsuario;
-        mUsuario = new Usuario("user", "Yuri", "Moura", "123", 1 );
+        mUsuario = new Usuario(
+                "user",
+                "Yuri", 
+                "Moura", 
+                "123", 
+                1 );
         msUsuarios [conUsu] = mUsuario;
         conUsu++;
         
-        mUsuario = new Usuario("tania", "Tania", "Maria", "123", 2 );
+        mUsuario = new Usuario(
+                "tania", 
+                "Tania", 
+                "Maria", 
+                "123", 
+                2 );
         msUsuarios [conUsu] = mUsuario;
         conUsu++;
         
-        mUsuario = new Usuario("teste1", "Teste1", "Teste1", "123", 2 );
+        mUsuario = new Usuario(
+                "teste1", 
+                "Teste1", 
+                "Teste1", 
+                "123", 
+                2 );
         msUsuarios [conUsu] = mUsuario;
         conUsu++;
         
         Produto mProduto;
-        mProduto = new Produto("1", "Arroz", 4, 0, "Arroz branco");
+        mProduto = new Produto(
+                "1", 
+                "Arroz", 
+                4, 
+                0, 
+                "Arroz branco");
         msProdutos[conPro] = mProduto;
         conPro++;
         
-        mProduto = new Produto("2", "Feijão", 7, 1, "Feijão preto");
+        mProduto = new Produto(
+                "2", 
+                "Feijão", 
+                7, 
+                1, 
+                "Feijão preto");
         msProdutos[conPro] = mProduto;
         conPro++;
         
-        mProduto = new Produto("3", "Farinha", 3, 0, "Farinha Branca");
+        mProduto = new Produto(
+                "3", 
+                "Farinha", 
+                3, 
+                0, 
+                "Farinha Branca");
         msProdutos[conPro] = mProduto;
         conPro++;
         
+        Cliente mCliente;
+        mCliente = new classes.Cliente(
+                "1", 
+                1, 
+                "Yuri", 
+                "Moura", 
+                "Rua", 
+                "71983429008", 
+                1, 
+                Utilidades.stringtoDate("27/06/1993"));
+        msClientes [conCli] = mCliente;
+        conCli++;
+        
+        mCliente = new classes.Cliente(
+                "2", 
+                2, 
+                "Tania", 
+                "Moura", 
+                "Rua", 
+                "71983429008", 
+                1, 
+                Utilidades.stringtoDate("11/07/1967"));
+        msClientes [conCli] = mCliente;
+        conCli++;
+        
+        mCliente = new classes.Cliente(
+                "3", 
+                3, 
+                "Jailton", 
+                "Souza", 
+                "Rua", 
+                "71983429008", 
+                1, 
+                Utilidades.stringtoDate("20/08/1965"));
+        msClientes [conCli] = mCliente;
+        conCli++;
         
     }
     
@@ -48,12 +117,20 @@ public class Dados {
         return conPro;
     }
     
+    public int numeroClientes() {
+        return conCli;
+    }
+    
     public Usuario[] getUsuarios() {
         return msUsuarios;
     }
     
     public Produto[] getProdutos() {
         return msProdutos;
+    }
+    
+    public Cliente [] getClientes() {
+        return msClientes;
     }
     
 public boolean validarUsuario (String usuario, String senha) {
@@ -91,6 +168,17 @@ public int posicaoProduto(String produto) {
         return -1;
  }
 
+public int posicaoCliente(String cliente) {
+        
+         for (int i = 0; i < conCli; i++) {
+            if (msClientes[i].getIdCliente().equals(cliente) ) {
+                return i;
+                    }
+          }
+        
+        return -1;
+ }
+
 public String adicionarUsuario (Usuario mUsuario) {
     if(conUsu == maxUsu) {
         return "Não é possivel cadastar mais usuario, limite maximo atingido";
@@ -108,6 +196,15 @@ public String adicionarProduto (Produto mProduto) {
     conPro++;
     return "Produto cadastrado com sucesso!";
 }
+
+public String adicionarCliente (Cliente mCliente) {
+    if(conCli == maxCli) {
+        return "Não é possivel cadastar mais clientes, limite maximo atingido";
+    }
+    msClientes [conCli] = mCliente;
+    conCli++;
+    return "Cliente cadastrado com sucesso!";
+}
    
 public String editarUsuario (Usuario mUsuario, int pos) {
     msUsuarios [pos].setNome(mUsuario.getNome());
@@ -118,13 +215,25 @@ public String editarUsuario (Usuario mUsuario, int pos) {
     return "Usuário editado com sucesso!";
 }
 
-public String editarPoduto (Produto mpProduto, int pos) {
-    msProdutos [pos].setDescricao(mpProduto.getDescricao());
-    msProdutos [pos].setPreco(mpProduto.getPreco());
-    msProdutos [pos].setImposto(mpProduto.getImposto());
-    msProdutos [pos].setAnotacao(mpProduto.getAnotacao());
+public String editarPoduto (Produto mProduto, int pos) {
+    msProdutos [pos].setDescricao(mProduto.getDescricao());
+    msProdutos [pos].setPreco(mProduto.getPreco());
+    msProdutos [pos].setImposto(mProduto.getImposto());
+    msProdutos [pos].setAnotacao(mProduto.getAnotacao());
     
     return "Produto editado com sucesso!";
+}
+
+public String editarCliente (Cliente mCliente, int pos) {
+    msClientes [pos].setIdCliente(mCliente.getIdCliente());
+    msClientes [pos].setNome(mCliente.getNome());
+    msClientes [pos].setSobrenome(mCliente.getSobrenome());
+    msClientes [pos].setEndereço(mCliente.getEndereço());
+    msClientes [pos].setTelefone(mCliente.getTelefone());
+    msClientes [pos].setIdCidade(mCliente.getIdCidade());
+    msClientes [pos].setDataNascimento(mCliente.getDataNascimento());
+        
+    return "Cliente editado com sucesso!";
 }
 
 public String deletarUsuario(int pos) {
@@ -143,6 +252,13 @@ public String deletarProduto(int pos) {
     return "Produto deletado com sucesso!" ;
 }
 
+public String deletarCliente(int pos) {
+    for(int i = pos; i < conCli -1; i++) {
+        msClientes[i] = msClientes[i + 1];
+    }
+    conCli--;
+    return "Cliente deletado com sucesso!" ;
+}
 
 
 
