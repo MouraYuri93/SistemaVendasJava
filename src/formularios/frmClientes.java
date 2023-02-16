@@ -526,24 +526,23 @@ public class frmClientes extends javax.swing.JInternalFrame {
             DataNascimento.requestFocusInWindow();
             return;
         }
-                        
-       int pos = msDados.posicaoCliente(txtIdCliente.getText());
+        
+        int pos = msDados.posicaoCliente(txtIdCliente.getText());
        if(novo) {
            if(pos != -1) {
                 JOptionPane.showMessageDialog(rootPane, 
-                        "Cliente já existe");
+                        "Usuário já existe");
                 txtIdCliente.requestFocusInWindow();
                 return;
            }
        } else {
            if(pos == -1) {
                 JOptionPane.showMessageDialog(rootPane, 
-                        "Cliente ainda não ");
+                        "Usuário disponível");
                 txtIdCliente.requestFocusInWindow();
                 return;
            }
        }
-            
        
         Cliente mCliente = new Cliente(
                 txtIdCliente.getText(),
@@ -555,6 +554,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
                 cmbCidade.getSelectedIndex(), 
                 DataNascimento.getDate());
        String msg;
+       
        if(novo){
            msg  = msDados.adicionarCliente(mCliente);
        }else {
@@ -590,7 +590,8 @@ public class frmClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja deletar esse produto?");
+        int resposta = JOptionPane.showConfirmDialog(rootPane,
+                "Deseja deletar esse produto?");
         if(resposta != 0) {
             return;
         }
@@ -659,13 +660,15 @@ public class frmClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        String cliente = JOptionPane.showInputDialog("Favor inserir codigo do Cliente");
+        String cliente = JOptionPane.showInputDialog(
+                "Favor inserir codigo do Cliente");
         if(cliente.equals("")) {
             return;
         }
         int pos = msDados.posicaoCliente(cliente);
         if(pos == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Este cliente não existe");
+            JOptionPane.showMessageDialog(rootPane, 
+                    "Este cliente não existe");
             return;
         }
          cliAtual = pos;

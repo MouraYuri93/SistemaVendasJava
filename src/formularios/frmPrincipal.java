@@ -1,6 +1,6 @@
-
 package formularios;
 
+import classes.BackGround;
 import classes.Dados;
 
 public class frmPrincipal extends javax.swing.JFrame {
@@ -18,7 +18,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dpnDesk = new javax.swing.JDesktopPane();
+        dpnDesk = new BackGround();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuArquivosSair = new javax.swing.JMenu();
         mnuArquivosClientes = new javax.swing.JMenuItem();
@@ -37,6 +37,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuAjudaAjuda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         dpnDesk.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -187,6 +192,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         dpnDesk.add(mProdutos);
         mProdutos.show();
     }//GEN-LAST:event_mnuArquivosProdutosActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ((BackGround)dpnDesk).setImagen("/img/img4.jpg");
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
 
