@@ -20,7 +20,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         dpnDesk = new BackGround();
         jMenuBar1 = new javax.swing.JMenuBar();
-        mnuArquivosSair = new javax.swing.JMenu();
+        mnuArquivos = new javax.swing.JMenu();
         mnuArquivosClientes = new javax.swing.JMenuItem();
         mnuArquivosProdutos = new javax.swing.JMenuItem();
         mnuArquivosUsuarios = new javax.swing.JMenuItem();
@@ -28,7 +28,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuArquivosTrocarSenha = new javax.swing.JMenuItem();
         mnuArquivosTrocarUsuarios = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mnuArquivosSair = new javax.swing.JMenuItem();
         mnuMovimentacoes = new javax.swing.JMenu();
         mnuMoviNovaVenda = new javax.swing.JMenuItem();
         mnuMoviRelatorio = new javax.swing.JMenuItem();
@@ -56,8 +56,8 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGap(0, 531, Short.MAX_VALUE)
         );
 
-        mnuArquivosSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/arq48.png"))); // NOI18N
-        mnuArquivosSair.setText("Arquivos");
+        mnuArquivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/arq48.png"))); // NOI18N
+        mnuArquivos.setText("Arquivos");
 
         mnuArquivosClientes.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuArquivosClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cliente48.png"))); // NOI18N
@@ -67,7 +67,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 mnuArquivosClientesActionPerformed(evt);
             }
         });
-        mnuArquivosSair.add(mnuArquivosClientes);
+        mnuArquivos.add(mnuArquivosClientes);
 
         mnuArquivosProdutos.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuArquivosProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/produ48.png"))); // NOI18N
@@ -77,7 +77,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 mnuArquivosProdutosActionPerformed(evt);
             }
         });
-        mnuArquivosSair.add(mnuArquivosProdutos);
+        mnuArquivos.add(mnuArquivosProdutos);
 
         mnuArquivosUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuArquivosUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/usuarios48.png"))); // NOI18N
@@ -87,13 +87,13 @@ public class frmPrincipal extends javax.swing.JFrame {
                 mnuArquivosUsuariosActionPerformed(evt);
             }
         });
-        mnuArquivosSair.add(mnuArquivosUsuarios);
-        mnuArquivosSair.add(jSeparator1);
+        mnuArquivos.add(mnuArquivosUsuarios);
+        mnuArquivos.add(jSeparator1);
 
         mnuArquivosTrocarSenha.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuArquivosTrocarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/senha48.png"))); // NOI18N
         mnuArquivosTrocarSenha.setText("Trocar senha");
-        mnuArquivosSair.add(mnuArquivosTrocarSenha);
+        mnuArquivos.add(mnuArquivosTrocarSenha);
 
         mnuArquivosTrocarUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuArquivosTrocarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tUsuarios48.png"))); // NOI18N
@@ -103,15 +103,20 @@ public class frmPrincipal extends javax.swing.JFrame {
                 mnuArquivosTrocarUsuariosActionPerformed(evt);
             }
         });
-        mnuArquivosSair.add(mnuArquivosTrocarUsuarios);
-        mnuArquivosSair.add(jSeparator2);
+        mnuArquivos.add(mnuArquivosTrocarUsuarios);
+        mnuArquivos.add(jSeparator2);
 
-        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sair48.png"))); // NOI18N
-        jMenuItem6.setText("Sair");
-        mnuArquivosSair.add(jMenuItem6);
+        mnuArquivosSair.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        mnuArquivosSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sair48.png"))); // NOI18N
+        mnuArquivosSair.setText("Sair");
+        mnuArquivosSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuArquivosSairActionPerformed(evt);
+            }
+        });
+        mnuArquivos.add(mnuArquivosSair);
 
-        jMenuBar1.add(mnuArquivosSair);
+        jMenuBar1.add(mnuArquivos);
 
         mnuMovimentacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/movi48.png"))); // NOI18N
         mnuMovimentacoes.setText("Movimentações");
@@ -197,6 +202,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         ((BackGround)dpnDesk).setImagen("/img/img4.jpg");
     }//GEN-LAST:event_formWindowOpened
 
+    private void mnuArquivosSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosSairActionPerformed
+        msDados.salvarTodo();
+        System.exit(0);
+    }//GEN-LAST:event_mnuArquivosSairActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -209,15 +219,15 @@ public class frmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpnDesk;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenu mnuAjuda;
     private javax.swing.JMenuItem mnuAjudaAjuda;
     private javax.swing.JMenuItem mnuAjudaSobre;
+    private javax.swing.JMenu mnuArquivos;
     private javax.swing.JMenuItem mnuArquivosClientes;
     private javax.swing.JMenuItem mnuArquivosProdutos;
-    private javax.swing.JMenu mnuArquivosSair;
+    private javax.swing.JMenuItem mnuArquivosSair;
     private javax.swing.JMenuItem mnuArquivosTrocarSenha;
     private javax.swing.JMenuItem mnuArquivosTrocarUsuarios;
     private javax.swing.JMenuItem mnuArquivosUsuarios;

@@ -1,5 +1,8 @@
 package classes;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class Dados {
     
     private int maxUsu = 50;
@@ -259,6 +262,47 @@ public String deletarCliente(int pos) {
     conCli--;
     return "Cliente deletado com sucesso!" ;
 }
+
+public void salvarTodo() {
+    salvarUsuarios();
+    salvarProdutos();
+    salvarClientes();
+}
+
+public void salvarUsuarios() {
+    FileWriter fw = null;
+    PrintWriter pw = null;
+    try {
+        fw = new FileWriter("Data/usuarios.txt");
+        pw = new PrintWriter(fw);
+        
+        for(int i = 0; i < conUsu; i++) {
+            pw.println(msUsuarios[i].toString());
+        }
+    } catch (Exception e1) {
+        e1.printStackTrace();
+    } finally {
+        try {
+            if(fw!= null) {
+                fw.close();
+            }
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+    
+}
+
+public void salvarProdutos() {
+    
+}
+
+public void salvarClientes() {
+    
+}
+
+
+
 
 
 

@@ -87,9 +87,21 @@ public class Cliente {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
-
     
+    
+    @Override
+    public String toString() {
+        return idCliente +"!"
+              + idTipo +"!"
+              + nome +"!"
+              + sobrenome +"!"
+              + endereço +"!"
+              + telefone +"!"
+              + idCidade +"!"
+              + dataNascimento;
+    }
+
+
     
     
 

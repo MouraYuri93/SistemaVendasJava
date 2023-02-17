@@ -56,6 +56,19 @@ public class Usuario {
         this.perfil = perfil;
     }
     
+    @Override
+    public String toString() {
+        return idUsuario +"!"
+              + nome +"!"
+              + sobreNome +"!"
+              + senha +"!"
+              + perfil;
+    }
+    
+    
+    
+    
+    
     
     
 }
