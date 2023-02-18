@@ -489,7 +489,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             return;
         }
        
-       int pos =msDados.posicaoUsuario(txtIdUsuario.getText());
+       int pos = msDados.posicaoUsuario(txtIdUsuario.getText());
        if(novo) {
            if(pos != -1) {
                 JOptionPane.showMessageDialog(rootPane, 

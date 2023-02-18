@@ -25,5 +25,13 @@ public class Utilidades {
         }
         return x;
     }
-           
+    
+    public static String formatDate(String Data) {
+        SimpleDateFormat formatotexto = new SimpleDateFormat("dd/MM/yyyy");
+        return formatotexto.format(Data);
+    }
+
+    static String formatDate(Date dataNascimento) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -1,7 +1,11 @@
 package classes;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.Date;
 
 public class Dados {
     
@@ -294,15 +298,266 @@ public void salvarUsuarios() {
 }
 
 public void salvarProdutos() {
-    
+    FileWriter fw = null;
+    PrintWriter pw = null;
+    try {
+        fw = new FileWriter("Data/produtos.txt");
+        pw = new PrintWriter(fw);
+        
+        for(int i = 0; i < conPro; i++) {
+            pw.println(msProdutos[i].toString());
+        }
+    } catch (Exception e1) {
+        e1.printStackTrace();
+    } finally {
+        try {
+            if(fw!= null) {
+                fw.close();
+            }
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
 }
 
 public void salvarClientes() {
-    
+    FileWriter fw = null;
+    PrintWriter pw = null;
+    try {
+        fw = new FileWriter("Data/clientes.txt");
+        pw = new PrintWriter(fw);
+        
+        for(int i = 0; i < conCli; i++) {
+            pw.println(msClientes[i].toString());
+        }
+    } catch (Exception e1) {
+        e1.printStackTrace();
+    } finally {
+        try {
+            if(fw!= null) {
+                fw.close();
+            }
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
 }
 
+public void preencherUsuarios() {
+    File arquivo = null;
+    FileReader fr = null;
+    BufferedReader br = null;
+    
+    try {
+      arquivo = new File("Data/usuarios.txt");
+      fr = new FileReader(arquivo);
+      br = new BufferedReader(fr);
+      
+      int pos;
+      String aux;
+      String linha;
+      String idUsuario;
+      String nome;
+      String sobreNome;
+      String senha;
+      int perfil;
+      
+      while((linha = br.readLine())!= null) {
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         idUsuario = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         nome = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         sobreNome = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         senha = aux;
+         linha = linha.substring(pos + 1);
+         
+         perfil = new Integer(linha);
+         
+         Usuario mUsuario = new Usuario(
+                 idUsuario, 
+                 nome, 
+                 sobreNome,
+                 senha, 
+                 perfil);
+         msUsuarios[conUsu] = mUsuario;
+         conUsu++;
+      }
+      
+    } catch (Exception e1) {
+        e1.printStackTrace();
+    } finally {
+        try {
+            if(fr != null) {
+                fr.close();
+            }
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+}
 
+public void preencherProdutos() {
+    File arquivo = null;
+    FileReader fr = null;
+    BufferedReader br = null;
+    
+    try {
+      arquivo = new File("Data/produtos.txt");
+      fr = new FileReader(arquivo);
+      br = new BufferedReader(fr);
+      
+        int pos;
+        String aux;
+        String linha;
+        String idProduto;
+        String descricao;
+        int preco;
+        int imposto;
+        String anotacao;
+      
+      while((linha = br.readLine())!= null) {
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         idProduto = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         descricao = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         preco = new Integer(aux);
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         imposto = new Integer(aux);
+         linha = linha.substring(pos + 1);
+         
+         anotacao = linha;
+         
+         Produto mProduto = new Produto(
+                 idProduto, 
+                 descricao, 
+                 preco, 
+                 imposto, 
+                 anotacao);
+         msProdutos[conPro] = mProduto;
+         conPro++;
+      }
+      
+    } catch (Exception e1) {
+        e1.printStackTrace();
+    } finally {
+        try {
+            if(fr != null) {
+                fr.close();
+            }
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+}
 
+public void preencherCLientes() {
+    File arquivo = null;
+    FileReader fr = null;
+    BufferedReader br = null;
+    
+    try {
+      arquivo = new File("Data/clientes.txt");
+      fr = new FileReader(arquivo);
+      br = new BufferedReader(fr);
+      
+        int pos;
+        String aux;
+        String linha;
+        String idCliente;
+        int idTipo;
+        String nome;
+        String sobrenome;
+        String endereço;
+        String telefone;
+        int idCidade;
+        Date dataNascimento;
+      
+      while((linha = br.readLine())!= null) {
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         idCliente = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         idTipo = new Integer(aux);
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         nome = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         sobrenome = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         endereço = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         telefone = aux;
+         linha = linha.substring(pos + 1);
+         
+         pos = linha.indexOf('|');
+         aux = linha.substring(0, pos);
+         idCidade = new Integer(aux);
+         linha = linha.substring(pos + 1);
+         
+         dataNascimento = Utilidades.stringtoDate(linha);
+         
+         Cliente mCliente = new Cliente(
+                 idCliente, 
+                 idTipo, 
+                 nome, 
+                 sobrenome, 
+                 endereço, 
+                 telefone, 
+                 idCidade, 
+                 dataNascimento);
+         msClientes[conCli] = mCliente;
+         conCli++;
+      }
+      
+    } catch (Exception e1) {
+        e1.printStackTrace();
+    } finally {
+        try {
+            if(fr != null) {
+                fr.close();
+            }
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+}
 
 
 

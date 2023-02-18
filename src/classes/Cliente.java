@@ -98,7 +98,7 @@ public class Cliente {
               + endereço +"!"
               + telefone +"!"
               + idCidade +"!"
-              + dataNascimento;
+              + Utilidades.formatDate(dataNascimento);
     }
 
 
