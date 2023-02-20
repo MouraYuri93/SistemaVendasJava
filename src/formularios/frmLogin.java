@@ -94,7 +94,7 @@ public class frmLogin extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -141,11 +141,10 @@ public class frmLogin extends javax.swing.JFrame {
         }
         frmPrincipal mPrincipal = new frmPrincipal();
         this.setVisible(false);
+        mPrincipal.setDados(msDados);
+        mPrincipal.setPerfil(msDados.getPerfil(txtUsuario.getText()));
         mPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        mPrincipal.setDados(msDados);
-        mPrincipal.setDados(msDados);
         mPrincipal.setVisible(true);
-        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
 

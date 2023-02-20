@@ -153,6 +153,15 @@ public boolean validarUsuario (String usuario, String senha) {
         return false;
  }
 
+public int getPerfil (String usuario) {
+    for(int i = 0; i < conUsu; i++) {
+        if (msUsuarios[i].getIdUsuario().equals(usuario)) {
+            return msUsuarios[i].getPerfil();
+            }
+        }
+        return -1;
+ }
+
 public int posicaoUsuario(String usuario) {
         
          for (int i = 0; i < conUsu; i++) {

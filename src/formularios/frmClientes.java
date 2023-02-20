@@ -473,35 +473,35 @@ public class frmClientes extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if(txtIdCliente.getText().equals(" ")) {
             JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um numero de ID do cliente");
+                    "Favor inserir um número de ID do cliente");
             txtIdCliente.requestFocusInWindow();
             return;
         }
         
         if(cmbIdentificacao.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor selecionar numero de ID de Identificação");
+            JOptionPane.showMessageDialog(rootPane,
+                    "Favor selecionar ID de identificação");
             cmbIdentificacao.requestFocusInWindow();
             return;
         }
         
         if(cmbCidade.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, 
+            JOptionPane.showMessageDialog(rootPane,
                     "Favor selecionar uma cidade");
             cmbCidade.requestFocusInWindow();
             return;
         }
-                        
+        
         if(txtNome.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um Nome");
+            JOptionPane.showMessageDialog(rootPane,
+                    "Favor inserir um nome");
             txtNome.requestFocusInWindow();
             return;
         }
         
         if(txtSobrenome.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um Sobrenome");
+            JOptionPane.showMessageDialog(rootPane,
+                    "Favor inserir um sobrenome");
             txtSobrenome.requestFocusInWindow();
             return;
         }
@@ -520,32 +520,32 @@ public class frmClientes extends javax.swing.JInternalFrame {
             return;
         }
         
-        if (DataNascimento.getDate().after(new Date())) {
-            JOptionPane.showMessageDialog(rootPane, 
+        if(DataNascimento.getDate().after(new Date())) {
+           JOptionPane.showMessageDialog(rootPane, 
                     "Favor inserir uma data de nascimento");
             DataNascimento.requestFocusInWindow();
-            return;
+            return; 
         }
         
         int pos = msDados.posicaoCliente(txtIdCliente.getText());
-       if(novo) {
-           if(pos != -1) {
+        if(novo) {
+            if(pos != -1) {
                 JOptionPane.showMessageDialog(rootPane, 
                         "Usuário já existe");
                 txtIdCliente.requestFocusInWindow();
                 return;
-           }
-       } else {
-           if(pos == -1) {
+            }
+        } else {
+            if(pos == -1) {
                 JOptionPane.showMessageDialog(rootPane, 
                         "Usuário disponível");
                 txtIdCliente.requestFocusInWindow();
                 return;
-           }
-       }
-       
+            }
+        }
+        
         Cliente mCliente = new Cliente(
-                txtIdCliente.getText(),
+                txtIdCliente.getText(), 
                 cmbIdentificacao.getSelectedIndex(), 
                 txtNome.getText(), 
                 txtSobrenome.getText(), 
@@ -553,16 +553,14 @@ public class frmClientes extends javax.swing.JInternalFrame {
                 txtTelefone.getText(), 
                 cmbCidade.getSelectedIndex(), 
                 DataNascimento.getDate());
-       String msg;
-       
-       if(novo){
-           msg  = msDados.adicionarCliente(mCliente);
-       }else {
-           msg  = msDados.editarCliente(mCliente, pos);
-           
-          }  
-           JOptionPane.showMessageDialog(rootPane, msg);
-      
+        String msg;
+        
+        if(novo) {
+            msg = msDados.adicionarCliente(mCliente);
+        } else {
+            msg = msDados.editarCliente(mCliente, pos);
+        }
+        JOptionPane.showMessageDialog(rootPane, msg);
         
         btnPrimeiro.setEnabled(true);
         btnAnterior.setEnabled(true);

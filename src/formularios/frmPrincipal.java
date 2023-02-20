@@ -5,9 +5,14 @@ import classes.Dados;
 
 public class frmPrincipal extends javax.swing.JFrame {
         private Dados msDados;
+        private int perfil;
     
     public void setDados(Dados msDados) {
         this.msDados = msDados;
+    }
+    
+    public void setPerfil(int perfil) {
+       this.perfil = perfil; 
     }
 
     public frmPrincipal() {
@@ -170,7 +175,11 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuArquivosTrocarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosTrocarUsuariosActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        frmLogin mLogin = new frmLogin();
+        mLogin.setDados(msDados);
+        mLogin.setLocationRelativeTo(null);
+        mLogin.setVisible(true);
     }//GEN-LAST:event_mnuArquivosTrocarUsuariosActionPerformed
 
     private void mnuArquivosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosClientesActionPerformed
@@ -200,6 +209,11 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ((BackGround)dpnDesk).setImagen("/img/img4.jpg");
+        
+        if(perfil == 2) {
+            mnuArquivosUsuarios.setEnabled(false);
+            mnuMoviRelatorio.setEnabled(false);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void mnuArquivosSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosSairActionPerformed
