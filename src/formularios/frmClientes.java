@@ -472,57 +472,49 @@ public class frmClientes extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if(txtIdCliente.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um número de ID do cliente");
+            JOptionPane.showMessageDialog(rootPane, "Favor inserir um número de ID do cliente");
             txtIdCliente.requestFocusInWindow();
             return;
         }
         
         if(cmbIdentificacao.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Favor selecionar ID de identificação");
+            JOptionPane.showMessageDialog(rootPane,"Favor selecionar ID de identificação");
             cmbIdentificacao.requestFocusInWindow();
             return;
         }
         
         if(cmbCidade.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Favor selecionar uma cidade");
+            JOptionPane.showMessageDialog(rootPane,"Favor selecionar uma cidade");
             cmbCidade.requestFocusInWindow();
             return;
         }
         
         if(txtNome.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Favor inserir um nome");
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir um nome");
             txtNome.requestFocusInWindow();
             return;
         }
         
         if(txtSobrenome.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Favor inserir um sobrenome");
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir um sobrenome");
             txtSobrenome.requestFocusInWindow();
             return;
         }
         
         if(txtEndereco.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um Endereço");
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir um Endereço");
             txtEndereco.requestFocusInWindow();
             return;
         }
         
         if(txtTelefone.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um número de Telefone");
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir um número de Telefone");
             txtTelefone.requestFocusInWindow();
             return;
         }
         
         if(DataNascimento.getDate().after(new Date())) {
-           JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir uma data de nascimento");
+           JOptionPane.showMessageDialog(rootPane,"Favor inserir uma data de nascimento");
             DataNascimento.requestFocusInWindow();
             return; 
         }
@@ -530,15 +522,13 @@ public class frmClientes extends javax.swing.JInternalFrame {
         int pos = msDados.posicaoCliente(txtIdCliente.getText());
         if(novo) {
             if(pos != -1) {
-                JOptionPane.showMessageDialog(rootPane, 
-                        "Usuário já existe");
+                JOptionPane.showMessageDialog(rootPane,"Usuário já existe");
                 txtIdCliente.requestFocusInWindow();
                 return;
             }
         } else {
             if(pos == -1) {
-                JOptionPane.showMessageDialog(rootPane, 
-                        "Usuário disponível");
+                JOptionPane.showMessageDialog(rootPane,"Usuário disponível");
                 txtIdCliente.requestFocusInWindow();
                 return;
             }
@@ -588,8 +578,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(rootPane,
-                "Deseja deletar esse produto?");
+        int resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja deletar esse produto?");
         if(resposta != 0) {
             return;
         }
@@ -658,15 +647,13 @@ public class frmClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        String cliente = JOptionPane.showInputDialog(
-                "Favor inserir codigo do Cliente");
+        String cliente = JOptionPane.showInputDialog("Favor inserir codigo do Cliente");
         if(cliente.equals("")) {
             return;
         }
         int pos = msDados.posicaoCliente(cliente);
         if(pos == -1) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Este cliente não existe");
+            JOptionPane.showMessageDialog(rootPane,"Este cliente não existe");
             return;
         }
          cliAtual = pos;

@@ -6,6 +6,16 @@ import classes.Dados;
 public class frmPrincipal extends javax.swing.JFrame {
         private Dados msDados;
         private int perfil;
+        private String senha;
+        private String usuario;
+        
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }    
+        
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }    
     
     public void setDados(Dados msDados) {
         this.msDados = msDados;
@@ -98,6 +108,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuArquivosTrocarSenha.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuArquivosTrocarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/senha48.png"))); // NOI18N
         mnuArquivosTrocarSenha.setText("Trocar senha");
+        mnuArquivosTrocarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuArquivosTrocarSenhaActionPerformed(evt);
+            }
+        });
         mnuArquivos.add(mnuArquivosTrocarSenha);
 
         mnuArquivosTrocarUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -221,8 +236,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_mnuArquivosSairActionPerformed
 
-    public static void main(String args[]) {
+    private void mnuArquivosTrocarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosTrocarSenhaActionPerformed
+        frmTrocarSenha msSenha = new frmTrocarSenha(this, rootPaneCheckingEnabled);
+        msSenha.setLocationRelativeTo(null);
+        msSenha.setSenha(senha);
+        msSenha.setUsuario(usuario);
+        msSenha.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_mnuArquivosTrocarSenhaActionPerformed
 
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmPrincipal().setVisible(true);

@@ -22,95 +22,41 @@ public class Dados {
     public Dados () {
         
         Usuario mUsuario;
-        mUsuario = new Usuario(
-                "user",
-                "Yuri", 
-                "Moura", 
-                "123", 
-                1 );
+        mUsuario = new Usuario("user","Yuri", "Moura", "123", 1);
         msUsuarios [conUsu] = mUsuario;
         conUsu++;
         
-        mUsuario = new Usuario(
-                "tania", 
-                "Tania", 
-                "Maria", 
-                "123", 
-                2 );
+        mUsuario = new Usuario("tania","Tania","Maria","123",2);
         msUsuarios [conUsu] = mUsuario;
         conUsu++;
         
-        mUsuario = new Usuario(
-                "teste1", 
-                "Teste1", 
-                "Teste1", 
-                "123", 
-                2 );
+        mUsuario = new Usuario("teste1","Teste1", "Teste1","123",2);
         msUsuarios [conUsu] = mUsuario;
         conUsu++;
         
         Produto mProduto;
-        mProduto = new Produto(
-                "1", 
-                "Arroz", 
-                4, 
-                0, 
-                "Arroz branco");
+        mProduto = new Produto("1","Arroz",4,0,"Arroz branco");
         msProdutos[conPro] = mProduto;
         conPro++;
         
-        mProduto = new Produto(
-                "2", 
-                "Feijão", 
-                7, 
-                1, 
-                "Feijão preto");
+        mProduto = new Produto( "2","Feijão",7,1,"Feijão preto");
         msProdutos[conPro] = mProduto;
         conPro++;
         
-        mProduto = new Produto(
-                "3", 
-                "Farinha", 
-                3, 
-                0, 
-                "Farinha Branca");
+        mProduto = new Produto("3","Farinha",3,0,"Farinha Branca");
         msProdutos[conPro] = mProduto;
         conPro++;
         
         Cliente mCliente;
-        mCliente = new classes.Cliente(
-                "1", 
-                1, 
-                "Yuri", 
-                "Moura", 
-                "Rua", 
-                "71983429008", 
-                1, 
-                Utilidades.stringtoDate("27/06/1993"));
+        mCliente = new classes.Cliente("1",1,"Yuri","Moura","Rua","71983429008",1,Utilidades.stringtoDate("27/06/1993"));
         msClientes [conCli] = mCliente;
         conCli++;
         
-        mCliente = new classes.Cliente(
-                "2", 
-                2, 
-                "Tania", 
-                "Moura", 
-                "Rua", 
-                "71983429008", 
-                1, 
-                Utilidades.stringtoDate("11/07/1967"));
+        mCliente = new classes.Cliente("2",2,"Tania","Moura","Rua","71983429008",1,Utilidades.stringtoDate("11/07/1967"));
         msClientes [conCli] = mCliente;
         conCli++;
         
-        mCliente = new classes.Cliente(
-                "3", 
-                3, 
-                "Jailton", 
-                "Souza", 
-                "Rua", 
-                "71983429008", 
-                1, 
-                Utilidades.stringtoDate("20/08/1965"));
+        mCliente = new classes.Cliente("3",3,"Jailton","Souza","Rua","71983429008",1,Utilidades.stringtoDate("20/08/1965"));
         msClientes [conCli] = mCliente;
         conCli++;
         
@@ -149,8 +95,7 @@ public boolean validarUsuario (String usuario, String senha) {
                 return true;
                     }
           }
-        
-        return false;
+         return false;
  }
 
 public int getPerfil (String usuario) {
@@ -162,6 +107,15 @@ public int getPerfil (String usuario) {
         return -1;
  }
 
+public void trocarSenha(String usuario,String senha) {
+    for(int i = 0; i < conUsu; i++) {
+        if(msUsuarios[i].getIdUsuario().equals(usuario)) {
+            msUsuarios[i].setSenha(senha);
+            return;
+        }
+    }
+}
+
 public int posicaoUsuario(String usuario) {
         
          for (int i = 0; i < conUsu; i++) {
@@ -169,8 +123,7 @@ public int posicaoUsuario(String usuario) {
                 return i;
                     }
           }
-        
-        return -1;
+         return -1;
  }
 
 public int posicaoProduto(String produto) {
@@ -180,8 +133,7 @@ public int posicaoProduto(String produto) {
                 return i;
                     }
           }
-        
-        return -1;
+         return -1;
  }
 
 public int posicaoCliente(String cliente) {
@@ -191,8 +143,7 @@ public int posicaoCliente(String cliente) {
                 return i;
                     }
           }
-        
-        return -1;
+         return -1;
  }
 
 public String adicionarUsuario (Usuario mUsuario) {
@@ -394,12 +345,7 @@ public void preencherUsuarios() {
          
          perfil = new Integer(linha);
          
-         Usuario mUsuario = new Usuario(
-                 idUsuario, 
-                 nome, 
-                 sobreNome,
-                 senha, 
-                 perfil);
+         Usuario mUsuario = new Usuario(idUsuario, nome, sobreNome, senha, perfil);
          msUsuarios[conUsu] = mUsuario;
          conUsu++;
       }
@@ -459,12 +405,7 @@ public void preencherProdutos() {
          
          anotacao = linha;
          
-         Produto mProduto = new Produto(
-                 idProduto, 
-                 descricao, 
-                 preco, 
-                 imposto, 
-                 anotacao);
+         Produto mProduto = new Produto(idProduto, descricao, preco, imposto, anotacao);
          msProdutos[conPro] = mProduto;
          conPro++;
       }
@@ -542,15 +483,7 @@ public void preencherCLientes() {
          
          dataNascimento = Utilidades.stringtoDate(linha);
          
-         Cliente mCliente = new Cliente(
-                 idCliente, 
-                 idTipo, 
-                 nome, 
-                 sobrenome, 
-                 endereço, 
-                 telefone, 
-                 idCidade, 
-                 dataNascimento);
+         Cliente mCliente = new Cliente(idCliente, idTipo, nome, sobrenome, endereço, telefone, idCidade, dataNascimento);
          msClientes[conCli] = mCliente;
          conCli++;
       }
@@ -567,6 +500,7 @@ public void preencherCLientes() {
         }
     }
 }
+
 
 
 

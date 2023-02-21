@@ -436,29 +436,25 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if(txtIdUsuario.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um numero de ID");
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir um numero de ID");
             txtIdUsuario.requestFocusInWindow();
             return;
         }
         
         if(cmbPerfil.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor selecionar um perfil");
+            JOptionPane.showMessageDialog(rootPane,"Favor selecionar um perfil");
             cmbPerfil.requestFocusInWindow();
             return;
         }
         
         if(txtNome.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um nome");
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir um nome");
             txtNome.requestFocusInWindow();
             return;
         }
         
         if(txtSobrenome.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir um sobrenome");
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir um sobrenome");
             txtSobrenome.requestFocusInWindow();
             return;
         }
@@ -467,22 +463,19 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         String confirmar = new String (txtConfiSenha.getPassword());
         
         if(senha.equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor inserir uma senha");
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir uma senha");
             txtSenha.requestFocusInWindow();
             return;
         }
         
         if(confirmar.equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Favor confirmar senha");
+            JOptionPane.showMessageDialog(rootPane,"Favor confirmar senha");
             txtConfiSenha.requestFocusInWindow();
             return;
         }
         
        if(! senha.equals(confirmar)) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Senhas diferentes");
+            JOptionPane.showMessageDialog(rootPane,"Senhas diferentes");
             txtSenha.setText(" ");
             txtConfiSenha.setText(" ");
             txtSenha.requestFocusInWindow();
@@ -492,15 +485,13 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
        int pos = msDados.posicaoUsuario(txtIdUsuario.getText());
        if(novo) {
            if(pos != -1) {
-                JOptionPane.showMessageDialog(rootPane, 
-                        "Usuário já existe");
+                JOptionPane.showMessageDialog(rootPane,"Usuário já existe");
                 txtSenha.requestFocusInWindow();
                 return;
            }
        } else {
            if(pos == 1) {
-                JOptionPane.showMessageDialog(rootPane, 
-                        "Usuário disponível");
+                JOptionPane.showMessageDialog(rootPane,"Usuário disponível");
                 txtSenha.requestFocusInWindow();
                 return;
            }
@@ -544,8 +535,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(rootPane,
-                "Deseja deletar esse usuário?");
+        int resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja deletar esse usuário?");
         if(resposta != 0) {
             return;
         }
@@ -610,15 +600,13 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        String usuario = JOptionPane.showInputDialog(
-                "Favor inserir codigo do usuário");
+        String usuario = JOptionPane.showInputDialog("Favor inserir codigo do usuário");
         if(usuario.equals("")) {
             return;
         }
         int pos = msDados.posicaoUsuario(usuario);
         if(pos == -1) {
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Este usuário não existe");
+            JOptionPane.showMessageDialog(rootPane,"Este usuário não existe");
             return;
         }
         usuAtual = pos;
