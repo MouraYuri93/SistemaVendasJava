@@ -467,10 +467,9 @@ public class frmProdutos extends javax.swing.JInternalFrame {
                 txtAnotacoes.getText());                           
        String msg;
        if(novo){
-           msg  = msDados.adicionarProduto(mProduto);
+           msg = msDados.adicionarProduto(mProduto);
        }else {
-           msg  = msDados.editarPoduto(mProduto, pos);
-           
+           msg = msDados.editarPoduto(mProduto, pos); 
           }  
            JOptionPane.showMessageDialog(rootPane, msg);
       

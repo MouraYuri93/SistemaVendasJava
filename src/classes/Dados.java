@@ -19,7 +19,7 @@ public class Dados {
     private int conPro = 0;
     private int conCli = 0;
     
-    public Dados () {
+    public Dados() {
         
         Usuario mUsuario;
         mUsuario = new Usuario("user","Yuri", "Moura", "123", 1);
@@ -86,9 +86,8 @@ public class Dados {
         return msClientes;
     }
     
-public boolean validarUsuario (String usuario, String senha) {
-        
-         boolean aux = false;
+public boolean validarUsuario(String usuario, String senha) {
+        boolean aux = false;
          for (int i = 0; i < conUsu; i++) {
             if (msUsuarios[i].getIdUsuario().equals(usuario) && 
                     msUsuarios[i].getSenha().equals(senha)) {
@@ -97,6 +96,26 @@ public boolean validarUsuario (String usuario, String senha) {
           }
          return false;
  }
+
+public boolean validarProduto(String produto) {
+        boolean aux = false;
+         for(int i = 0; i < conPro; i++) {
+            if(msProdutos[i].getIdProduto().equals(produto)){
+                return true;
+                    }
+          }
+         return false;
+ }
+
+public boolean validarCliente(String cliente) {
+    boolean aux = false;
+    for(int i = 0; i < conCli; i++) {
+        if(msClientes[i].getIdCliente().equals(cliente)) {
+            return true;
+        }
+    }
+    return false;
+}
 
 public int getPerfil (String usuario) {
     for(int i = 0; i < conUsu; i++) {
@@ -117,8 +136,7 @@ public void trocarSenha(String usuario,String senha) {
 }
 
 public int posicaoUsuario(String usuario) {
-        
-         for (int i = 0; i < conUsu; i++) {
+        for (int i = 0; i < conUsu; i++) {
             if (msUsuarios[i].getIdUsuario().equals(usuario) ) {
                 return i;
                     }
@@ -127,8 +145,7 @@ public int posicaoUsuario(String usuario) {
  }
 
 public int posicaoProduto(String produto) {
-        
-         for (int i = 0; i < conPro; i++) {
+        for (int i = 0; i < conPro; i++) {
             if (msProdutos[i].getIdProduto().equals(produto) ) {
                 return i;
                     }
@@ -137,8 +154,7 @@ public int posicaoProduto(String produto) {
  }
 
 public int posicaoCliente(String cliente) {
-        
-         for (int i = 0; i < conCli; i++) {
+        for (int i = 0; i < conCli; i++) {
             if (msClientes[i].getIdCliente().equals(cliente) ) {
                 return i;
                     }
@@ -146,34 +162,34 @@ public int posicaoCliente(String cliente) {
          return -1;
  }
 
-public String adicionarUsuario (Usuario mUsuario) {
+public String adicionarUsuario(Usuario mUsuario) {
     if(conUsu == maxUsu) {
         return "Não é possivel cadastar mais usuario, limite maximo atingido";
     }
-    msUsuarios [conUsu] = mUsuario;
+    msUsuarios[conUsu] = mUsuario;
     conUsu++;
     return "Usuário cadastrado com sucesso!";
 }
 
-public String adicionarProduto (Produto mProduto) {
+public String adicionarProduto(Produto mProduto) {
     if(conPro == maxPro) {
         return "Não é possivel cadastar mais produtos, limite maximo atingido";
     }
-    msProdutos [conPro] = mProduto;
+    msProdutos[conPro] = mProduto;
     conPro++;
     return "Produto cadastrado com sucesso!";
 }
 
-public String adicionarCliente (Cliente mCliente) {
+public String adicionarCliente(Cliente mCliente) {
     if(conCli == maxCli) {
         return "Não é possivel cadastar mais clientes, limite maximo atingido";
     }
-    msClientes [conCli] = mCliente;
+    msClientes[conCli] = mCliente;
     conCli++;
     return "Cliente cadastrado com sucesso!";
 }
    
-public String editarUsuario (Usuario mUsuario, int pos) {
+public String editarUsuario(Usuario mUsuario, int pos) {
     msUsuarios [pos].setNome(mUsuario.getNome());
     msUsuarios [pos].setSobreNome(mUsuario.getSobreNome());
     msUsuarios [pos].setSenha(mUsuario.getSenha());
@@ -182,7 +198,7 @@ public String editarUsuario (Usuario mUsuario, int pos) {
     return "Usuário editado com sucesso!";
 }
 
-public String editarPoduto (Produto mProduto, int pos) {
+public String editarPoduto(Produto mProduto, int pos) {
     msProdutos [pos].setDescricao(mProduto.getDescricao());
     msProdutos [pos].setPreco(mProduto.getPreco());
     msProdutos [pos].setImposto(mProduto.getImposto());
@@ -191,7 +207,7 @@ public String editarPoduto (Produto mProduto, int pos) {
     return "Produto editado com sucesso!";
 }
 
-public String editarCliente (Cliente mCliente, int pos) {
+public String editarCliente(Cliente mCliente, int pos) {
     msClientes [pos].setIdCliente(mCliente.getIdCliente());
     msClientes [pos].setNome(mCliente.getNome());
     msClientes [pos].setSobrenome(mCliente.getSobrenome());

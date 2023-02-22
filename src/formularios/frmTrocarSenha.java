@@ -1,10 +1,16 @@
 package formularios;
 
+import classes.Dados;
 import javax.swing.JOptionPane;
 
 public class frmTrocarSenha extends javax.swing.JDialog {
     private String senha;
     private String usuario;
+    private Dados msDados;
+        
+    public void setDados(Dados msDados) {
+        this.msDados = msDados;
+    }
         
     public void setUsuario(String usuario) {
         this.usuario = usuario;
@@ -155,11 +161,24 @@ public class frmTrocarSenha extends javax.swing.JDialog {
             return;
         }
         
+        if(!senhaAtual.equals(senha)) {
+            JOptionPane.showMessageDialog(rootPane, "Senhas diferente da atual");
+            txtSenhaAtual.setText(" ");
+            txtSenhaAtual.requestFocusInWindow();
+            return;
+        }
+        
         if(!novaSenha.equals(confiSenha)) {
             JOptionPane.showMessageDialog(rootPane, "Senhas não correspondem");
+            txtNovaSenha.setText(" ");
+            txtConfiSenha.setText(" ");
             txtNovaSenha.requestFocusInWindow();
             return;
         }
+        
+        msDados.trocarSenha(usuario, novaSenha);
+        JOptionPane.showMessageDialog(rootPane, "Senhas trocada com sucesso");
+        this.dispose();
         
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

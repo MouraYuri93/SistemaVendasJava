@@ -4,10 +4,14 @@ import classes.BackGround;
 import classes.Dados;
 
 public class frmPrincipal extends javax.swing.JFrame {
-        private Dados msDados;
         private int perfil;
         private String senha;
         private String usuario;
+        private Dados msDados;
+        
+    public void setDados(Dados msDados) {
+        this.msDados = msDados;
+    }    
         
     public void setUsuario(String usuario) {
         this.usuario = usuario;
@@ -16,10 +20,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     public void setSenha(String senha) {
         this.senha = senha;
     }    
-    
-    public void setDados(Dados msDados) {
-        this.msDados = msDados;
-    }
     
     public void setPerfil(int perfil) {
        this.perfil = perfil; 
@@ -164,11 +164,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuAjudaSobre.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuAjudaSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sobre48.png"))); // NOI18N
         mnuAjudaSobre.setText("Sobre");
+        mnuAjudaSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAjudaSobreActionPerformed(evt);
+            }
+        });
         mnuAjuda.add(mnuAjudaSobre);
 
         mnuAjudaAjuda.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         mnuAjudaAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ajuda-48.png"))); // NOI18N
         mnuAjudaAjuda.setText("Ajuda");
+        mnuAjudaAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAjudaAjudaActionPerformed(evt);
+            }
+        });
         mnuAjuda.add(mnuAjudaAjuda);
 
         jMenuBar1.add(mnuAjuda);
@@ -241,8 +251,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         msSenha.setLocationRelativeTo(null);
         msSenha.setSenha(senha);
         msSenha.setUsuario(usuario);
+        msSenha.setDados(msDados);
         msSenha.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_mnuArquivosTrocarSenhaActionPerformed
+
+    private void mnuAjudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAjudaSobreActionPerformed
+        frmSobre mSobre = new frmSobre(this, rootPaneCheckingEnabled);
+        mSobre.setLocationRelativeTo(this);
+        mSobre.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_mnuAjudaSobreActionPerformed
+
+    private void mnuAjudaAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAjudaAjudaActionPerformed
+        frmAjuda mAjuda = new frmAjuda(this, rootPaneCheckingEnabled);
+        mAjuda.setLocationRelativeTo(this);
+        mAjuda.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_mnuAjudaAjudaActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

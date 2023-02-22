@@ -544,10 +544,9 @@ public class frmClientes extends javax.swing.JInternalFrame {
                 cmbCidade.getSelectedIndex(), 
                 DataNascimento.getDate());
         String msg;
-        
         if(novo) {
             msg = msDados.adicionarCliente(mCliente);
-        } else {
+        }else {
             msg = msDados.editarCliente(mCliente, pos);
         }
         JOptionPane.showMessageDialog(rootPane, msg);
