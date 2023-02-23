@@ -215,7 +215,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuArquivosClientesActionPerformed
 
     private void mnuMoviNovaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMoviNovaVendaActionPerformed
-        // TODO add your handling code here:
+        frmVenda mVenda = new frmVenda();
+        mVenda.setDados(msDados);
+        dpnDesk.add(mVenda);
+        mVenda.show();
     }//GEN-LAST:event_mnuMoviNovaVendaActionPerformed
 
     private void mnuArquivosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosUsuariosActionPerformed

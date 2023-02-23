@@ -130,7 +130,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtSenha.setEnabled(false);
 
-        btnPrimeiro.setBackground(new java.awt.Color(204, 204, 204));
         btnPrimeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back48.png"))); // NOI18N
         btnPrimeiro.setToolTipText("Primeiro");
         btnPrimeiro.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +138,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnUltimo.setBackground(new java.awt.Color(204, 204, 204));
         btnUltimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/next48.png"))); // NOI18N
         btnUltimo.setToolTipText("Ultimo");
         btnUltimo.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +146,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAdicionar.setBackground(new java.awt.Color(204, 204, 204));
         btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/adicionar48.png"))); // NOI18N
         btnAdicionar.setToolTipText("Adicionar");
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +154,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEditar.setBackground(new java.awt.Color(204, 204, 204));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/editar48.png"))); // NOI18N
         btnEditar.setToolTipText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +162,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSalvar.setBackground(new java.awt.Color(204, 204, 204));
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/salvar48.png"))); // NOI18N
         btnSalvar.setToolTipText("Salvar");
         btnSalvar.setEnabled(false);
@@ -176,7 +171,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDeletar.setBackground(new java.awt.Color(204, 204, 204));
         btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/deletar48.png"))); // NOI18N
         btnDeletar.setToolTipText("Deletar");
         btnDeletar.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +179,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(204, 204, 204));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cancelar48.png"))); // NOI18N
         btnCancelar.setToolTipText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +187,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAnterior.setBackground(new java.awt.Color(204, 204, 204));
         btnAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/retrocesso-48.png"))); // NOI18N
         btnAnterior.setToolTipText("Anterior");
         btnAnterior.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +195,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnProximo.setBackground(new java.awt.Color(204, 204, 204));
         btnProximo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/avanço48.png"))); // NOI18N
         btnProximo.setToolTipText("Proximo");
         btnProximo.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +218,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         tblTabela.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tblTabela);
 
-        btnPesquisar.setBackground(new java.awt.Color(204, 204, 204));
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pesquisar48.png"))); // NOI18N
         btnPesquisar.setToolTipText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
