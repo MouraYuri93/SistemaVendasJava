@@ -64,6 +64,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(204, 204, 204));
         setClosable(true);
         setIconifiable(true);
+        setMaximizable(true);
         setTitle("Clientes");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -512,13 +513,13 @@ public class frmClientes extends javax.swing.JInternalFrame {
         int pos = msDados.posicaoCliente(txtIdCliente.getText());
         if(novo) {
             if(pos != -1) {
-                JOptionPane.showMessageDialog(rootPane,"Usuário já existe");
+                JOptionPane.showMessageDialog(rootPane,"Cliente já existe");
                 txtIdCliente.requestFocusInWindow();
                 return;
             }
         } else {
-            if(pos == -1) {
-                JOptionPane.showMessageDialog(rootPane,"Usuário disponível");
+            if(pos == 1) {
+                JOptionPane.showMessageDialog(rootPane,"Cliente disponível");
                 txtIdCliente.requestFocusInWindow();
                 return;
             }

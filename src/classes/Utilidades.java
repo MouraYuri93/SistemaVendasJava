@@ -5,8 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Utilidades {
-
-    public static boolean isNumeric (String Numero) {
+    public static boolean isNumeric(String Numero) {
         try {
             Integer.parseInt(Numero);
             return true;
@@ -15,23 +14,24 @@ public class Utilidades {
         }
     }
     
-    public static Date stringtoDate (String Data) {
+    public static Date stringtoDate(String Data) {
         SimpleDateFormat formatotexto = new SimpleDateFormat("dd/MM/yyyy");
         Date x = null;
         try {
             x = formatotexto.parse(Data);
-        } catch (ParseException ex) {
-            
+        } catch (ParseException ex) {   
         }
         return x;
     }
     
-    public static String formatDate(String Data) {
+    public static String formatDate(Date Data) {
         SimpleDateFormat formatotexto = new SimpleDateFormat("dd/MM/yyyy");
         return formatotexto.format(Data);
     }
 
+/*   
     static String formatDate(Date dataNascimento) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+*/
 }

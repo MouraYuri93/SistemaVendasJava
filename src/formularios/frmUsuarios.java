@@ -389,10 +389,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         txtConfiSenha.setEnabled(true);
         cmbPerfil.setEnabled(true);
         //limpar caixa de textos
-        txtIdUsuario.setText(" ");
-        txtNome.setText(" ");
-        txtSobrenome.setText(" ");
-        txtSenha.setText(" ");
+        txtIdUsuario.setText("");
+        txtNome.setText("");
+        txtSobrenome.setText("");
+        txtSenha.setText("");
         txtConfiSenha.setText("");
         cmbPerfil.setSelectedIndex(0);
         

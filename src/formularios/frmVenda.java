@@ -1,6 +1,8 @@
 package formularios;
 
 import classes.Dados;
+import classes.Utilidades;
+import java.util.Date;
 
 public class frmVenda extends javax.swing.JInternalFrame {
     private Dados msDados;
@@ -258,7 +260,7 @@ public class frmVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtQuantiTotalActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-        
+        txtData.setText(Utilidades.formatDate(new Date()));
     }//GEN-LAST:event_formInternalFrameOpened
 
 

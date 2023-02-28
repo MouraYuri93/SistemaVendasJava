@@ -55,6 +55,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(204, 204, 204));
         setClosable(true);
         setIconifiable(true);
+        setMaximizable(true);
         setTitle("Produtos");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -363,10 +364,10 @@ public class frmProdutos extends javax.swing.JInternalFrame {
         cmbImposto.setEnabled(true);
         
         //limpar caixa de textos
-        txtIdProduto.setText(" ");
-        txtDescricao.setText(" ");
-        txtPreco.setText(" ");
-        txtAnotacoes.setText(" ");        
+        txtIdProduto.setText("");
+        txtDescricao.setText("");
+        txtPreco.setText("");
+        txtAnotacoes.setText("");        
         cmbImposto.setSelectedIndex(0);
         
         novo = true;
