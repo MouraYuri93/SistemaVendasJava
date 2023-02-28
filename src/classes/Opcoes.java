@@ -1,6 +1,5 @@
 package classes;
 
-
 public class Opcoes {
     private String valor;
     private String descricao;

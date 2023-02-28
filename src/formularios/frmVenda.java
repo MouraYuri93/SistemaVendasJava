@@ -1,11 +1,15 @@
 package formularios;
 
 import classes.Dados;
+import classes.Opcoes;
 import classes.Utilidades;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class frmVenda extends javax.swing.JInternalFrame {
     private Dados msDados;
+    private DefaultTableModel mTabela;
     
     public void setDados(Dados msDados) {
         this.msDados = msDados;
@@ -84,13 +88,10 @@ public class frmVenda extends javax.swing.JInternalFrame {
         });
 
         txtQuantidade.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        txtQuantidade.setEnabled(false);
 
         cmbProduto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        cmbProduto.setEnabled(false);
 
         cmbCliente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        cmbCliente.setEnabled(false);
 
         tblDetalhes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,6 +121,11 @@ public class frmVenda extends javax.swing.JInternalFrame {
 
         btnAdicionar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/adicionar48.png"))); // NOI18N
         btnAdicionar4.setToolTipText("Adicionar");
+        btnAdicionar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionar4ActionPerformed(evt);
+            }
+        });
 
         btnPesquisarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pesquisar48.png"))); // NOI18N
         btnPesquisarCli.setToolTipText("Pesquisar");
@@ -128,6 +134,7 @@ public class frmVenda extends javax.swing.JInternalFrame {
         faturaValor.setText("Valor Total:");
 
         txtValorTotal.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        txtValorTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtValorTotal.setEnabled(false);
         txtValorTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +146,7 @@ public class frmVenda extends javax.swing.JInternalFrame {
         faturaTotal1.setText("Quantidade Total:");
 
         txtQuantiTotal.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        txtQuantiTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtQuantiTotal.setEnabled(false);
         txtQuantiTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,9 +268,85 @@ public class frmVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtQuantiTotalActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        Opcoes opc = new Opcoes("moruayuri93@gmail.com", "Selecione um cliente");
+        cmbCliente.addItem(opc.toString());
+        for(int i = 0; i < msDados.numeroClientes(); i++) {
+            opc = new Opcoes(
+           msDados.getClientes()[i].getIdCliente(),
+                msDados.getClientes()[i].getNome() + "" +
+                msDados.getClientes()[i].getSobrenome());
+                cmbCliente.addItem(opc.toString());    
+        }
+        
+        opc = new Opcoes("moruayuri93@gmail.com", "Selecione um produto");
+        cmbProduto.addItem(opc.toString());
+        for(int i = 0; i < msDados.numeroProdutos(); i++) {
+            opc = new Opcoes(
+          msDados.getProdutos()[i].getIdProduto(),
+       msDados.getProdutos()[i].getDescricao());
+                cmbProduto.addItem(opc.toString());            
+        }
+        
         txtData.setText(Utilidades.formatDate(new Date()));
+        txtQuantiTotal.setText("0");
+        txtValorTotal.setText("0");
+        
+        preencherTabela();
+        
     }//GEN-LAST:event_formInternalFrameOpened
 
+    private void btnAdicionar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar4ActionPerformed
+        if(cmbProduto.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Favor selecionar produto");
+            cmbProduto.requestFocusInWindow();
+            return;
+        }
+        
+        if(txtQuantidade.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Favor inserir uma Quantidade!");
+            txtQuantidade.requestFocusInWindow();
+            return;
+        }
+        
+        if(!Utilidades.isNumeric(txtQuantidade.getText())) {
+           JOptionPane.showMessageDialog(rootPane, "Favor inserir somente numeros");
+           txtQuantidade.setText("");
+           txtQuantidade.requestFocusInWindow();
+           return; 
+        }
+        
+        int quantidade = Integer.parseInt(txtQuantidade.getText());
+        if(quantidade <= 0) {
+            JOptionPane.showMessageDialog(rootPane,"Favor inserir numeros acima de zero");
+            txtQuantidade.requestFocusInWindow();
+            txtQuantidade.setText("");
+            return;
+        }
+        
+        int pos = msDados.posicaoProduto(((Opcoes)cmbProduto.getSelectedItem()).getValor());
+        
+        String registro[] = new String[5];
+        registro[0] = msDados.getProdutos()[pos].getIdProduto();
+        registro[1] = msDados.getProdutos()[pos].getDescricao();
+        registro[2] = "" + msDados.getProdutos()[pos].getPreco();
+        registro[3] = "" + quantidade;
+        registro[4] = "" + (quantidade* msDados.getProdutos()[pos].getPreco());
+        mTabela.addRow(registro);
+        
+        cmbProduto.setSelectedIndex(0);
+        txtQuantidade.setText("");
+        cmbProduto.requestFocusInWindow();
+        
+    }//GEN-LAST:event_btnAdicionar4ActionPerformed
+
+    
+    private void preencherTabela() {
+        String titulos[] = {"ID Produdo", "Descriç]ao", "Preço", "Qtd", "Valor"};
+        String registro[] = new String[5];
+        mTabela = new DefaultTableModel(null, titulos);
+        tblDetalhes.setModel(mTabela);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar4;

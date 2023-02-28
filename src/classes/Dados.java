@@ -137,7 +137,7 @@ public void trocarSenha(String usuario,String senha) {
 
 public int posicaoUsuario(String usuario) {
         for (int i = 0; i < conUsu; i++) {
-            if (msUsuarios[i].getIdUsuario().equals(usuario) ) {
+            if(msUsuarios[i].getIdUsuario().equals(usuario)) {
                 return i;
                     }
           }
@@ -146,7 +146,7 @@ public int posicaoUsuario(String usuario) {
 
 public int posicaoProduto(String produto) {
         for (int i = 0; i < conPro; i++) {
-            if (msProdutos[i].getIdProduto().equals(produto) ) {
+            if(msProdutos[i].getIdProduto().equals(produto)) {
                 return i;
                     }
           }
@@ -155,7 +155,7 @@ public int posicaoProduto(String produto) {
 
 public int posicaoCliente(String cliente) {
         for (int i = 0; i < conCli; i++) {
-            if (msClientes[i].getIdCliente().equals(cliente) ) {
+            if(msClientes[i].getIdCliente().equals(cliente)) {
                 return i;
                     }
           }
