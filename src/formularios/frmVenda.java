@@ -5,6 +5,8 @@ import classes.Opcoes;
 import classes.Utilidades;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class frmVenda extends javax.swing.JInternalFrame {
@@ -336,6 +338,7 @@ public class frmVenda extends javax.swing.JInternalFrame {
         cmbProduto.setSelectedIndex(0);
         txtQuantidade.setText("");
         cmbProduto.requestFocusInWindow();
+        totais();
         
     }//GEN-LAST:event_btnAdicionar4ActionPerformed
 
@@ -345,6 +348,23 @@ public class frmVenda extends javax.swing.JInternalFrame {
         String registro[] = new String[5];
         mTabela = new DefaultTableModel(null, titulos);
         tblDetalhes.setModel(mTabela);
+        
+        DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+        dtcr.setHorizontalAlignment(SwingConstants.RIGHT);
+        tblDetalhes.getColumnModel().getColumn(2).setCellRenderer(dtcr);
+        tblDetalhes.getColumnModel().getColumn(3).setCellRenderer(dtcr);
+        tblDetalhes.getColumnModel().getColumn(4).setCellRenderer(dtcr);
+    }
+    
+    private void totais() {
+        int num = tblDetalhes.getRowCount();
+        int somQuant = 0, somVal = 0;
+        for(int i = 0; i < num; i++) {
+            somQuant += Utilidades.objectToInt(tblDetalhes.getValueAt(i, 3));
+            somVal += Utilidades.objectToInt(tblDetalhes.getValueAt(i, 4));
+        }
+        txtQuantiTotal.setText("" + somQuant);
+        txtValorTotal.setText("" + somVal);
     }
     
 

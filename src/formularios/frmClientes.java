@@ -416,8 +416,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         txtTelefone.setEnabled(true);
         cmbCidade.setEnabled(true);
         DataNascimento.setEnabled(true);
-        
-        
+                
         //limpar caixa de textos
         txtIdCliente.setText("");
         cmbIdentificacao.setSelectedIndex(0);
