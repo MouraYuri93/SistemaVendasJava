@@ -18,8 +18,16 @@ public class Dados {
     private int conUsu = 0;
     private int conPro = 0;
     private int conCli = 0;
+    private int numVenda = 0;
     
     public Dados() {
+        preencherUsuarios();
+        
+        preencherProdutos();
+        
+        preencherClientes();
+        
+        preecherConfiguracao();
         
         Usuario mUsuario;
         mUsuario = new Usuario("user","Yuri", "Moura", "123", 1);
@@ -60,6 +68,14 @@ public class Dados {
         msClientes [conCli] = mCliente;
         conCli++;
         
+    }
+    
+    public int getNumeroVenda() {
+        return numVenda;
+    }
+    
+    public void setNumeroFatura(int numVenda1) {
+        this.numVenda = numVenda;
     }
     
     public int numeroUsuarios() {
@@ -247,6 +263,7 @@ public void salvarTodo() {
     salvarUsuarios();
     salvarProdutos();
     salvarClientes();
+    salvarConfiguracao();
 }
 
 public void salvarUsuarios() {
@@ -256,6 +273,7 @@ public void salvarUsuarios() {
         fw = new FileWriter("Data/usuarios.txt");
         pw = new PrintWriter(fw);
         
+        
         for(int i = 0; i < conUsu; i++) {
             pw.println(msUsuarios[i].toString());
         }
@@ -263,7 +281,7 @@ public void salvarUsuarios() {
         e1.printStackTrace();
     } finally {
         try {
-            if(fw!= null) {
+            if(fw != null) {
                 fw.close();
             }
         } catch (Exception e2) {
@@ -287,7 +305,7 @@ public void salvarProdutos() {
         e1.printStackTrace();
     } finally {
         try {
-            if(fw!= null) {
+            if(fw != null) {
                 fw.close();
             }
         } catch (Exception e2) {
@@ -310,6 +328,29 @@ public void salvarClientes() {
         e1.printStackTrace();
     } finally {
         try {
+            if(fw != null) {
+                fw.close();
+            }
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+}
+
+public void salvarConfiguracao() {
+    FileWriter fw = null;
+    PrintWriter pw = null;
+    try {
+        fw = new FileWriter("Data/Configuracao.ini");
+        pw = new PrintWriter(fw);
+        
+        pw.println("[Geral]");
+        pw.println("VendaAtual=" + numVenda);
+        
+    } catch (Exception e1) {
+        e1.printStackTrace();
+    } finally {
+        try {
             if(fw!= null) {
                 fw.close();
             }
@@ -317,6 +358,7 @@ public void salvarClientes() {
             e2.printStackTrace();
         }
     }
+    
 }
 
 public void preencherUsuarios() {
@@ -439,7 +481,7 @@ public void preencherProdutos() {
     }
 }
 
-public void preencherCLientes() {
+public void preencherClientes() {
     File arquivo = null;
     FileReader fr = null;
     BufferedReader br = null;
@@ -517,7 +559,35 @@ public void preencherCLientes() {
     }
 }
 
-
+public void preecherConfiguracao() {
+    File arquivo = null;
+    FileReader fr = null;
+    BufferedReader br = null;
+    
+    try {
+      arquivo = new File("Data/Configuracao.ini");
+      fr = new FileReader(arquivo);
+      br = new BufferedReader(fr);
+      
+      String linha;
+              
+      while((linha = br.readLine())!= null) {
+        if(linha.startsWith("VendaAtual=")) {
+        numVenda = new Integer(linha.substring(13));
+        }
+      }
+    } catch (Exception e1) {
+        e1.printStackTrace();
+    } finally {
+        try {
+            if(fr != null) {
+                fr.close();
+            }
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+}
 
 
 

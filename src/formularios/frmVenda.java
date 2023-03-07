@@ -3,6 +3,8 @@ package formularios;
 import classes.Dados;
 import classes.Opcoes;
 import classes.Utilidades;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -113,7 +115,11 @@ public class frmVenda extends javax.swing.JInternalFrame {
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/salvar48.png"))); // NOI18N
         btnSalvar.setToolTipText("Salvar");
-        btnSalvar.setEnabled(false);
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/deletar48.png"))); // NOI18N
         btnDeletar.setToolTipText("Deletar");
@@ -342,7 +348,71 @@ public class frmVenda extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnAdicionar4ActionPerformed
 
-    
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if(cmbCliente.getSelectedIndex()==0) {
+            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um cliente");
+            cmbCliente.requestFocusInWindow();
+            return;
+        }
+        int totalQuant = new Integer(txtQuantiTotal.getText());
+        
+        if(totalQuant==0) {
+            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um produto");
+            cmbProduto.requestFocusInWindow();
+            return;
+        }
+        
+        int resposta = JOptionPane.showConfirmDialog(rootPane,"Confirmar a venda?");
+        if(resposta != 0) {
+            return;
+        }
+        
+        int numVenda = msDados.getNumeroVenda()+1;
+            FileWriter fw = null;
+            PrintWriter pw = null;
+            try {
+                fw = new FileWriter("Data/venda.txt", true);
+                pw = new PrintWriter(fw);
+                
+                String aux = "1|"
+                        + numVenda + "|"
+                        + ((Opcoes)cmbCliente.getSelectedItem()).getValor() + "|"
+                        + ((Opcoes)cmbCliente.getSelectedItem()).getDescricao() + "|"
+                        + txtData.getText();
+                pw.println(aux);
+                
+                int num = tblDetalhes.getRowCount();
+                for(int i = 0; i < num; i++) {
+                    aux = "2|"
+                        + Utilidades.objectToString(tblDetalhes.getValueAt(i, 0)) + "|"
+                        + Utilidades.objectToString(tblDetalhes.getValueAt(i, 1)) + "|"
+                        + Utilidades.objectToString(tblDetalhes.getValueAt(i, 2)) + "|"
+                        + Utilidades.objectToString(tblDetalhes.getValueAt(i, 3)) + "|"
+                        + Utilidades.objectToString(tblDetalhes.getValueAt(i, 4));
+                    pw.println(aux);
+                }
+
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            } finally {
+                try {
+                    if(fw!= null) {
+                        fw.close();
+                    }
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            }
+            JOptionPane.showMessageDialog(rootPane, 
+                    "Venda:" + numVenda + "Venda realizada com sucesso!");
+            msDados.setNumeroFatura(numVenda);
+            cmbCliente.setSelectedIndex(0);
+            limparTabela();
+            totais();
+            cmbCliente.requestFocusInWindow();
+            
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
     private void preencherTabela() {
         String titulos[] = {"ID Produdo", "Descriç]ao", "Preço", "Qtd", "Valor"};
         String registro[] = new String[5];
@@ -365,6 +435,18 @@ public class frmVenda extends javax.swing.JInternalFrame {
         }
         txtQuantiTotal.setText("" + somQuant);
         txtValorTotal.setText("" + somVal);
+    }
+    
+    public void limparTabela() {
+        try {
+            DefaultTableModel modelo = (DefaultTableModel)tblDetalhes.getModel();
+            int linha = tblDetalhes.getRowCount();
+            for(int i = 0; linha > i; i++){
+                modelo.removeRow(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 

@@ -517,7 +517,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
                 return;
             }
         } else {
-            if(pos == -1) {
+            if(pos == 1) {
                 JOptionPane.showMessageDialog(rootPane,"Cliente disponível");
                 txtIdCliente.requestFocusInWindow();
                 return;
