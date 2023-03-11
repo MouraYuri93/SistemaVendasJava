@@ -425,7 +425,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         txtEndereco.setText("");
         txtTelefone.setText("");
         cmbCidade.setSelectedIndex(0);
-        DataNascimento.setDate(Date());
+        DataNascimento.setDate(new Date());
         
         
         novo = true;
@@ -517,7 +517,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
                 return;
             }
         } else {
-            if(pos == 1) {
+            if(pos == -1) {
                 JOptionPane.showMessageDialog(rootPane,"Cliente disponível");
                 txtIdCliente.requestFocusInWindow();
                 return;
@@ -750,7 +750,5 @@ public class frmClientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel usuarioIdCliente;
     // End of variables declaration//GEN-END:variables
 
-    private Date Date() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 }

@@ -21,14 +21,6 @@ public class Dados {
     private int numVenda = 0;
     
     public Dados() {
-        preencherUsuarios();
-        
-        preencherProdutos();
-        
-        preencherClientes();
-        
-        preecherConfiguracao();
-        
         Usuario mUsuario;
         mUsuario = new Usuario("user","Yuri", "Moura", "123", 1);
         msUsuarios [conUsu] = mUsuario;

@@ -123,6 +123,11 @@ public class frmVenda extends javax.swing.JInternalFrame {
 
         btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/deletar48.png"))); // NOI18N
         btnDeletar.setToolTipText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
 
         btnPesquisarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pesquisar48.png"))); // NOI18N
         btnPesquisarPro.setToolTipText("Pesquisar");
@@ -412,6 +417,15 @@ public class frmVenda extends javax.swing.JInternalFrame {
             cmbCliente.requestFocusInWindow();
             
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+       int resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja deletar essa venda?");
+        if(resposta != 0) {
+            return;
+        }
+        limparTabela();
+        totais();
+    }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void preencherTabela() {
         String titulos[] = {"ID Produdo", "Descriç]ao", "Preço", "Qtd", "Valor"};
