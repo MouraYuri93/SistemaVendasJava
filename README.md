@@ -6,10 +6,10 @@ Foi construindo um ambiente onde um usuário tivesse a possibilidade de cadastra
 - [x] Cadastro de cliente
 - [x] Cadastro de produto
 - [x] Cadastro de usuário
-- [x] trocar de senha
-- [x] troca de usuário
+- [x] Trocar de senha
+- [x] Troca de usuário
 - [x] Cadastro de novo pedido
-- [x] relatório
+- [x] Relatório
 
 ### 🛠 Tecnologias
 
