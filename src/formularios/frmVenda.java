@@ -285,10 +285,10 @@ public class frmVenda extends javax.swing.JInternalFrame {
         cmbCliente.addItem(opc.toString());
         for(int i = 0; i < msDados.numeroClientes(); i++) {
             opc = new Opcoes(
-           msDados.getClientes()[i].getIdCliente(),
-                msDados.getClientes()[i].getNome() + "" +
-                msDados.getClientes()[i].getSobrenome());
-                cmbCliente.addItem(opc.toString());    
+                        msDados.getClientes()[i].getIdCliente(),
+                        msDados.getClientes()[i].getNome() + " " +
+                        msDados.getClientes()[i].getSobrenome());
+                        cmbCliente.addItem(opc.toString());    
         }
         
         opc = new Opcoes("moruayuri93@gmail.com", "Selecione um produto");
@@ -309,9 +309,15 @@ public class frmVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnAdicionar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar4ActionPerformed
-        if(cmbProduto.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Favor selecionar produto");
+        if(cmbProduto.getSelectedIndex()==0) {
+            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um produto");
             cmbProduto.requestFocusInWindow();
+            return;
+        }
+        
+        if(cmbCliente.getSelectedIndex()==0) {
+            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um cliente");
+            cmbCliente.requestFocusInWindow();
             return;
         }
         
@@ -337,7 +343,7 @@ public class frmVenda extends javax.swing.JInternalFrame {
         }
         
         int pos = msDados.posicaoProduto(((Opcoes)cmbProduto.getSelectedItem()).getValor());
-        
+   
         String registro[] = new String[5];
         registro[0] = msDados.getProdutos()[pos].getIdProduto();
         registro[1] = msDados.getProdutos()[pos].getDescricao();
@@ -462,8 +468,8 @@ public class frmVenda extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-    
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar4;
     private javax.swing.JButton btnDeletar;
@@ -486,4 +492,6 @@ public class frmVenda extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtQuantidade;
     private javax.swing.JTextField txtValorTotal;
     // End of variables declaration//GEN-END:variables
+
+    
 }

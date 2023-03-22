@@ -21,44 +21,11 @@ public class Dados {
     private int numVenda = 0;
     
     public Dados() {
-        Usuario mUsuario;
-        mUsuario = new Usuario("user","Yuri", "Moura", "123", 1);
-        msUsuarios [conUsu] = mUsuario;
-        conUsu++;
+        preencherUsuarios();
         
-        mUsuario = new Usuario("tania","Tania","Maria","123",2);
-        msUsuarios [conUsu] = mUsuario;
-        conUsu++;
+        preencherProdutos();
         
-        mUsuario = new Usuario("teste1","Teste1", "Teste1","123",2);
-        msUsuarios [conUsu] = mUsuario;
-        conUsu++;
-        
-        Produto mProduto;
-        mProduto = new Produto("1","Arroz",4,0,"Arroz branco");
-        msProdutos[conPro] = mProduto;
-        conPro++;
-        
-        mProduto = new Produto( "2","Feijão",7,1,"Feijão preto");
-        msProdutos[conPro] = mProduto;
-        conPro++;
-        
-        mProduto = new Produto("3","Farinha",3,0,"Farinha Branca");
-        msProdutos[conPro] = mProduto;
-        conPro++;
-        
-        Cliente mCliente;
-        mCliente = new classes.Cliente("1",1,"Yuri","Moura","Rua","71983429008",1,Utilidades.stringtoDate("27/06/1993"));
-        msClientes [conCli] = mCliente;
-        conCli++;
-        
-        mCliente = new classes.Cliente("2",2,"Tania","Moura","Rua","71983429008",1,Utilidades.stringtoDate("11/07/1967"));
-        msClientes [conCli] = mCliente;
-        conCli++;
-        
-        mCliente = new classes.Cliente("3",3,"Jailton","Souza","Rua","71983429008",1,Utilidades.stringtoDate("20/08/1965"));
-        msClientes [conCli] = mCliente;
-        conCli++;
+        preencherClientes();
         
     }
     
@@ -373,22 +340,22 @@ public void preencherUsuarios() {
       int perfil;
       
       while((linha = br.readLine())!= null) {
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          idUsuario = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          nome = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          sobreNome = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          senha = aux;
          linha = linha.substring(pos + 1);
@@ -433,22 +400,22 @@ public void preencherProdutos() {
         String anotacao;
       
       while((linha = br.readLine())!= null) {
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          idProduto = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          descricao = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          preco = new Integer(aux);
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          imposto = new Integer(aux);
          linha = linha.substring(pos + 1);
@@ -496,37 +463,37 @@ public void preencherClientes() {
         Date dataNascimento;
       
       while((linha = br.readLine())!= null) {
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          idCliente = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          idTipo = new Integer(aux);
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          nome = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          sobrenome = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          endereço = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          telefone = aux;
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('|');
+         pos = linha.indexOf('!');
          aux = linha.substring(0, pos);
          idCidade = new Integer(aux);
          linha = linha.substring(pos + 1);
