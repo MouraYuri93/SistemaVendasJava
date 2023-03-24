@@ -83,7 +83,7 @@ public class frmVenda extends javax.swing.JInternalFrame {
         faturaProduto.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         faturaProduto.setText("Produto:");
 
-        txtData.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        txtData.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtData.setEnabled(false);
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,11 +91,11 @@ public class frmVenda extends javax.swing.JInternalFrame {
             }
         });
 
-        txtQuantidade.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        txtQuantidade.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        cmbProduto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cmbProduto.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
-        cmbCliente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        cmbCliente.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
 
         tblDetalhes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

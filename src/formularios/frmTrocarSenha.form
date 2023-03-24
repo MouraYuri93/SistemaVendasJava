@@ -34,11 +34,11 @@
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Component id="btnSair" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="tsSenhaAtual" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                  <Component id="tsNovaSenha" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                   <Component id="txtNovaSenha" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
                   <Component id="tsConfiSenha" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="txtConfiSenha" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
+                  <Component id="tsSenhaAtual" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="tsNovaSenha" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel6" max="32767" attributes="0"/>
@@ -104,7 +104,7 @@
     <Component class="javax.swing.JPasswordField" name="txtSenhaAtual">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="28" style="1"/>
+          <Font name="SansSerif" size="24" style="1"/>
         </Property>
       </Properties>
     </Component>
@@ -156,7 +156,7 @@
     <Component class="javax.swing.JPasswordField" name="txtNovaSenha">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="28" style="1"/>
+          <Font name="SansSerif" size="24" style="1"/>
         </Property>
       </Properties>
     </Component>
@@ -175,7 +175,7 @@
     <Component class="javax.swing.JPasswordField" name="txtConfiSenha">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="28" style="1"/>
+          <Font name="SansSerif" size="24" style="1"/>
         </Property>
       </Properties>
     </Component>

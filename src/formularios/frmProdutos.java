@@ -87,19 +87,19 @@ public class frmProdutos extends javax.swing.JInternalFrame {
         usuarioSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         usuarioSenha.setText("Anotações:");
 
-        txtPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtPreco.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtPreco.setEnabled(false);
 
-        txtIdProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtIdProduto.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtIdProduto.setEnabled(false);
 
-        txtDescricao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtDescricao.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtDescricao.setEnabled(false);
 
         usuarioPerfil.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         usuarioPerfil.setText("Imposto:");
 
-        cmbImposto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmbImposto.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         cmbImposto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0%", "10%", "15%" }));
         cmbImposto.setToolTipText("");
         cmbImposto.setEnabled(false);
@@ -219,6 +219,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
         });
 
         txtAnotacoes.setColumns(20);
+        txtAnotacoes.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtAnotacoes.setRows(5);
         txtAnotacoes.setEnabled(false);
         jScrollPane2.setViewportView(txtAnotacoes);
@@ -325,7 +326,7 @@ public class frmProdutos extends javax.swing.JInternalFrame {
                     .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 377, Short.MAX_VALUE)
