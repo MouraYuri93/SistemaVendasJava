@@ -65,10 +65,5 @@ public class Usuario {
               + perfil;
     }
     
-    
-    
-    
-    
-    
-    
+      
 }

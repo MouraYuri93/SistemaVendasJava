@@ -678,7 +678,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
             "Sobrenome",
             "Endereço",
             "Telefone",
-            "CIdade", 
+            "Cidade", 
             "Data Nascimento"};
         String registro[] = new String[8];
         mTabela = new DefaultTableModel(null, titulos);
