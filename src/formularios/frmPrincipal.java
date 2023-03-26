@@ -215,10 +215,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuArquivosClientesActionPerformed
 
     private void mnuMoviNovaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMoviNovaVendaActionPerformed
-        frmVenda mVenda = new frmVenda();
-       mVenda.setDados(msDados);
-        dpnDesk.add(mVenda);
-        mVenda.show();
+        frmFatura mFatura = new frmFatura();
+        mFatura.setDados(msDados);
+        dpnDesk.add(mFatura);
+        mFatura.show();
     }//GEN-LAST:event_mnuMoviNovaVendaActionPerformed
 
     private void mnuArquivosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArquivosUsuariosActionPerformed

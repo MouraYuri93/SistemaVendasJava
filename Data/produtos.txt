@@ -2,3 +2,4 @@
 2!Feijão!7!1!Feijão preto
 3!Farinha!3!0!Farinha Branca
 4!Notebook!5800!1!Dell G15
+5!Celular!2000!1!RogPhone
