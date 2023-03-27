@@ -218,12 +218,12 @@ public class frmFatura extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(faturaData)
                         .addGap(3, 3, 3)
-                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(faturaQuantidade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(faturaCliente)
@@ -343,40 +343,44 @@ public class frmFatura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-     if(cmbCliente.getSelectedIndex()==0) {
-            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um cliente");
-            cmbCliente.requestFocusInWindow();
-            return;
-        }
-        int totalQuant = new Integer(txtQuantiTotal.getText());
-        
-        if(totalQuant==0) {
-            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um produto");
-            cmbProduto.requestFocusInWindow();
-            return;
-        }
-        
-        int resposta = JOptionPane.showConfirmDialog(rootPane,"Confirmar a venda?");
-        if(resposta != 0) {
-            return;
-        }
-        
-        int numVenda = msDados.getNumeroVenda()+1;
+        if (cmbCliente.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Favor selecionar um cliente");
+                cmbCliente.requestFocusInWindow();
+                return;
+            }
+
+            int totalQuant = Integer.parseInt(txtQuantiTotal.getText()); // utilizando Integer.parseInt para converter string para inteiro
+
+            if (totalQuant == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Favor selecionar um produto");
+                cmbProduto.requestFocusInWindow();
+                return;
+            }
+
+            int resposta = JOptionPane.showConfirmDialog(rootPane, "Confirmar a venda?");
+            if (resposta != JOptionPane.YES_OPTION) { // utilizando a constante JOptionPane.YES_OPTION para comparar com a resposta do usuário
+                return;
+            }
+
+            int numVenda = msDados.getNumeroVenda() + 1;
             FileWriter fw = null;
             PrintWriter pw = null;
             try {
                 fw = new FileWriter("Data/venda.txt", true);
                 pw = new PrintWriter(fw);
-                
+
+                String clienteStr = cmbCliente.getSelectedItem().toString(); // obtendo a string selecionada em cmbCliente
+                String[] clienteSplit = clienteStr.split("-"); // dividindo a string em duas partes separadas por "-"
+                Opcoes cliente = new Opcoes(clienteSplit[0], clienteSplit[1]); // criando um novo objeto Opcoes com os valores corretos
                 String aux = "1|"
                         + numVenda + "|"
-                        + ((Opcoes)cmbCliente.getSelectedItem()).getValor() + "|"
-                        + ((Opcoes)cmbCliente.getSelectedItem()).getDescricao() + "|"
+                        + cliente.getValor() + "|"
+                        + cliente.getDescricao() + "|"
                         + txtData.getText();
                 pw.println(aux);
-                
+
                 int num = tblDetalhes.getRowCount();
-                for(int i = 0; i < num; i++) {
+                for (int i = 0; i < num; i++) {
                     aux = "2|"
                         + Utilidades.objectToString(tblDetalhes.getValueAt(i, 0)) + "|"
                         + Utilidades.objectToString(tblDetalhes.getValueAt(i, 1)) + "|"
@@ -390,21 +394,19 @@ public class frmFatura extends javax.swing.JInternalFrame {
                 e1.printStackTrace();
             } finally {
                 try {
-                    if(fw!= null) {
+                    if (fw != null) {
                         fw.close();
                     }
                 } catch (Exception e2) {
                     e2.printStackTrace();
                 }
             }
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Venda:" + numVenda + "Venda realizada com sucesso!");
+            JOptionPane.showMessageDialog(rootPane, "Venda: " + numVenda + " - Venda realizada com sucesso!"); // corrigindo a mensagem exibida
             msDados.setNumeroFatura(numVenda);
             cmbCliente.setSelectedIndex(0);
             limparTabela();
             totais();
             cmbCliente.requestFocusInWindow();
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
