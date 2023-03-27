@@ -86,13 +86,13 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         usuarioSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         usuarioSenha.setText("Senha:");
 
-        txtSobrenome.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtSobrenome.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtSobrenome.setEnabled(false);
 
-        txtIdUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtIdUsuario.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtIdUsuario.setEnabled(false);
 
-        txtNome.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtNome.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtNome.setEnabled(false);
 
         usuarioPerfil.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -101,7 +101,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         usuarioConfiSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         usuarioConfiSenha.setText("Confirmar Senha:");
 
-        cmbPerfil.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cmbPerfil.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         cmbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Perfil", "Administrador", "Funcionario" }));
         cmbPerfil.setToolTipText("");
         cmbPerfil.setEnabled(false);
@@ -111,7 +111,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        txtConfiSenha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtConfiSenha.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtConfiSenha.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -127,7 +127,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user100.png"))); // NOI18N
         jLabel5.setName(""); // NOI18N
 
-        txtSenha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtSenha.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         txtSenha.setEnabled(false);
 
         btnPrimeiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back48.png"))); // NOI18N

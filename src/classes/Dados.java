@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
@@ -18,7 +19,7 @@ public class Dados {
     private int conUsu = 0;
     private int conPro = 0;
     private int conCli = 0;
-    private int numVenda = 0;
+    private int numFatura = 0;
     
     public Dados() {
         preencherUsuarios();
@@ -27,14 +28,16 @@ public class Dados {
         
         preencherClientes();
         
+        preencherConfiguracao();
+        
     }
     
     public int getNumeroVenda() {
-        return numVenda;
+        return numFatura;
     }
     
-    public void setNumeroFatura(int numVenda1) {
-        this.numVenda = numVenda;
+    public void setNumeroFatura(int numFatura) {
+        this.numFatura = numFatura;
     }
     
     public int numeroUsuarios() {
@@ -304,7 +307,7 @@ public void salvarConfiguracao() {
         pw = new PrintWriter(fw);
         
         pw.println("[Geral]");
-        pw.println("VendaAtual=" + numVenda);
+        pw.println("VendaAtual=" + numFatura);
         
     } catch (Exception e1) {
         e1.printStackTrace();
@@ -518,35 +521,23 @@ public void preencherClientes() {
     }
 }
 
-public void preecherConfiguracao() {
-    File arquivo = null;
-    FileReader fr = null;
-    BufferedReader br = null;
+public void preencherConfiguracao() {
+    File arquivo = new File("Data/Configuracao.ini");
     
-    try {
-      arquivo = new File("Data/Configuracao.ini");
-      fr = new FileReader(arquivo);
-      br = new BufferedReader(fr);
-      
-      String linha;
-              
-      while((linha = br.readLine())!= null) {
-        if(linha.startsWith("VendaAtual=")) {
-        numVenda = new Integer(linha.substring(13));
-        }
-      }
-    } catch (Exception e1) {
-        e1.printStackTrace();
-    } finally {
-        try {
-            if(fr != null) {
-                fr.close();
+    try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+        String linha;
+        
+        while ((linha = br.readLine()) != null) {
+            if (linha.startsWith("VendaAtual=")) {
+                numFatura = Integer.parseInt(linha.substring(11));
+                break;
             }
-        } catch (Exception e2) {
-            e2.printStackTrace();
         }
+    } catch (IOException e) {
+        e.printStackTrace();
     }
 }
+
 
 
 
