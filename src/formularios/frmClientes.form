@@ -92,10 +92,10 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="56" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="103" max="32767" attributes="0"/>
+                      <EmptySpace pref="126" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -113,12 +113,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtIdCliente" min="-2" pref="124" max="-2" attributes="0"/>
                           <Component id="usuarioIdCliente" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="clienteEndereco" min="-2" max="-2" attributes="0"/>
                           <Component id="txtEndereco" min="-2" pref="426" max="-2" attributes="0"/>
                       </Group>
@@ -145,14 +139,10 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="usuarioIdCliente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtIdCliente" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel5" min="-2" pref="87" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="usuarioIdCliente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtIdCliente" min="-2" pref="32" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -296,20 +286,6 @@
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="3c" green="0" red="0" type="rgb"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="36" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="3c" green="0" red="0" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icon/clientes98.png"/>
         </Property>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>

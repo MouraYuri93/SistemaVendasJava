@@ -179,7 +179,6 @@ public String editarUsuario(Usuario mUsuario, int pos) {
 public String editarPoduto(Produto mProduto, int pos) {
     msProdutos [pos].setDescricao(mProduto.getDescricao());
     msProdutos [pos].setPreco(mProduto.getPreco());
-    msProdutos [pos].setImposto(mProduto.getImposto());
     msProdutos [pos].setAnotacao(mProduto.getAnotacao());
     
     return "Produto editado com sucesso!";
@@ -399,7 +398,6 @@ public void preencherProdutos() {
         String idProduto;
         String descricao;
         int preco;
-        int imposto;
         String anotacao;
       
       while((linha = br.readLine())!= null) {
@@ -418,14 +416,9 @@ public void preencherProdutos() {
          preco = new Integer(aux);
          linha = linha.substring(pos + 1);
          
-         pos = linha.indexOf('!');
-         aux = linha.substring(0, pos);
-         imposto = new Integer(aux);
-         linha = linha.substring(pos + 1);
-         
          anotacao = linha;
          
-         Produto mProduto = new Produto(idProduto, descricao, preco, imposto, anotacao);
+         Produto mProduto = new Produto(idProduto, descricao, preco, anotacao);
          msProdutos[conPro] = mProduto;
          conPro++;
       }

@@ -1,3 +1,5 @@
-3!Farinha!3!0!Farinha Branca
-4!Notebook!5800!1!Dell G15
-5!Celular!2000!1!RogPhone
+1!Notebook!5899!Dell G15
+2!Monitor!1800!Monitor 27' 144hz
+3!Mesa!600!Mesa em L
+4!Cadeira!1000!Cadeira Gamer
+5!Suporte!50!Suporte Notebook
