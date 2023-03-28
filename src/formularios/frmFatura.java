@@ -4,10 +4,12 @@ import classes.Dados;
 import classes.Opcoes;
 import classes.Produto;
 import classes.Utilidades;
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -17,6 +19,9 @@ public class frmFatura extends javax.swing.JInternalFrame {
 
     private Dados msDados;
     private DefaultTableModel mTabela;
+    private JLabel lblTotalQuantidade;
+    private JLabel lblTotalValor;
+
     
     public void setDados(Dados msDados) {
         this.msDados = msDados;
@@ -343,7 +348,65 @@ public class frmFatura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
+        if(cmbCliente.getSelectedIndex()==0) {
+        JOptionPane.showMessageDialog(rootPane, "Favor selecionar um cliente");
+        cmbCliente.requestFocusInWindow();
+        return;
+        }
+        int totalQuant = Integer.parseInt(txtQuantiTotal.getText());
+
+        if(totalQuant==0) {
+            JOptionPane.showMessageDialog(rootPane, "Favor selecionar um produto");
+            cmbProduto.requestFocusInWindow();
+            return;
+        }
+
+        int resposta = JOptionPane.showConfirmDialog(rootPane,"Confirmar a venda?");
+        if(resposta != 0) {
+            return;
+        }
+
+        int numVenda = msDados.getNumeroVenda()+1;
+        FileWriter fw = null;
+        PrintWriter pw = null;
+        try {
+            fw = new FileWriter("Data/venda.txt", true);
+            pw = new PrintWriter(fw);
+
+            String cabecalho = "1|" + numVenda + "|";
+            cabecalho += cmbCliente.getSelectedItem().toString().split(" - ")[0] + "!"; // obter o valor do cliente
+            cabecalho += cmbCliente.getSelectedItem().toString() + "!"; // obter a descrição do cliente
+            cabecalho += txtData.getText();
+            pw.println(cabecalho);
+
+            int num = tblDetalhes.getRowCount();
+            for(int i = 0; i < num; i++) {
+                String detalhe = "2|";
+                detalhe += Utilidades.objectToString(tblDetalhes.getValueAt(i, 0)) + "!";
+                detalhe += Utilidades.objectToString(tblDetalhes.getValueAt(i, 1)) + "!";
+                detalhe += Utilidades.objectToString(tblDetalhes.getValueAt(i, 2)) + "!";
+                detalhe += Utilidades.objectToString(tblDetalhes.getValueAt(i, 3)) + "!";
+                detalhe += Utilidades.objectToString(tblDetalhes.getValueAt(i, 4));
+                pw.println(detalhe);
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        } finally {
+            try {
+                if(fw!= null) {
+                    fw.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        JOptionPane.showMessageDialog(rootPane,
+                "Venda:" + numVenda + "Venda realizada com sucesso!");
+        msDados.setNumeroFatura(numVenda);
+        cmbCliente.setSelectedIndex(0);
+        limparTabela();
+        totais();
+        cmbCliente.requestFocusInWindow();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
