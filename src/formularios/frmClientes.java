@@ -400,71 +400,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        btnPrimeiro.setEnabled(false);
-        btnAnterior.setEnabled(false);
-        btnProximo.setEnabled(false);
-        btnUltimo.setEnabled(false);
-        btnAdicionar.setEnabled(false);
-        btnEditar.setEnabled(false);
-        btnSalvar.setEnabled(true);
-        btnDeletar.setEnabled(false);
-        btnCancelar.setEnabled(true);
-        btnPesquisar.setEnabled(false);
-        //caixa de textos
-        txtIdCliente.setEnabled(true);
-        cmbIdentificacao.setEnabled(true);
-        txtNome.setEnabled(true);
-        txtSobrenome.setEnabled(true);
-        txtEndereco.setEnabled(true);
-        txtTelefone.setEnabled(true);
-        cmbCidade.setEnabled(true);
-        DataNascimento.setEnabled(true);
-                
-        //limpar caixa de textos
-        txtIdCliente.setText("");
-        cmbIdentificacao.setSelectedIndex(0);
-        txtNome.setText("");
-        txtSobrenome.setText("");
-        txtEndereco.setText("");
-        txtTelefone.setText("");
-        cmbCidade.setSelectedIndex(0);
-        DataNascimento.setDate(new Date());
-        
-        
-        novo = true;
-        txtIdCliente.requestFocus();
-        
-        
-    }//GEN-LAST:event_btnAdicionarActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        btnPrimeiro.setEnabled(false);
-        btnAnterior.setEnabled(false);
-        btnProximo.setEnabled(false);
-        btnUltimo.setEnabled(false);
-        btnAdicionar.setEnabled(false);
-        btnEditar.setEnabled(false);
-        btnSalvar.setEnabled(true);
-        btnDeletar.setEnabled(false);
-        btnCancelar.setEnabled(true);
-        btnPesquisar.setEnabled(false);
-        //caixa de textos
-        txtNome.setEnabled(true);
-        txtIdCliente.setEnabled(true);
-        cmbIdentificacao.setEnabled(true);
-        txtNome.setEnabled(true);
-        txtSobrenome.setEnabled(true);
-        txtEndereco.setEnabled(true);
-        txtTelefone.setEnabled(true);
-        cmbCidade.setEnabled(true);
-        DataNascimento.setEnabled(true);
-        
-        novo = false;
-        
-    }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {
         // Verifica se o campo de ID do cliente foi preenchido
         if(txtIdCliente.getText().equals(" ")) {            
             JOptionPane.showMessageDialog(rootPane, "Favor inserir um número de ID do cliente");
@@ -596,9 +532,9 @@ public class frmClientes extends javax.swing.JInternalFrame {
         DataNascimento.setEnabled(false);
         // Atualizar a tabela de clientes
         preencherTabela();
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }
 
-    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {
         int resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja deletar esse cliente?");
         if(resposta != 0) {
             return;
@@ -609,9 +545,73 @@ public class frmClientes extends javax.swing.JInternalFrame {
         cliAtual = 0;
         mostrarRegistro();
         preencherTabela();
-    }//GEN-LAST:event_btnDeletarActionPerformed
+    }
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {
+        btnPrimeiro.setEnabled(false);
+        btnAnterior.setEnabled(false);
+        btnProximo.setEnabled(false);
+        btnUltimo.setEnabled(false);
+        btnAdicionar.setEnabled(false);
+        btnEditar.setEnabled(false);
+        btnSalvar.setEnabled(true);
+        btnDeletar.setEnabled(false);
+        btnCancelar.setEnabled(true);
+        btnPesquisar.setEnabled(false);
+        //caixa de textos
+        txtIdCliente.setEnabled(true);
+        cmbIdentificacao.setEnabled(true);
+        txtNome.setEnabled(true);
+        txtSobrenome.setEnabled(true);
+        txtEndereco.setEnabled(true);
+        txtTelefone.setEnabled(true);
+        cmbCidade.setEnabled(true);
+        DataNascimento.setEnabled(true);
+                
+        //limpar caixa de textos
+        txtIdCliente.setText("");
+        cmbIdentificacao.setSelectedIndex(0);
+        txtNome.setText("");
+        txtSobrenome.setText("");
+        txtEndereco.setText("");
+        txtTelefone.setText("");
+        cmbCidade.setSelectedIndex(0);
+        DataNascimento.setDate(new Date());
+        
+        
+        novo = true;
+        txtIdCliente.requestFocus();
+        
+        
+    }
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {
+        btnPrimeiro.setEnabled(false);
+        btnAnterior.setEnabled(false);
+        btnProximo.setEnabled(false);
+        btnUltimo.setEnabled(false);
+        btnAdicionar.setEnabled(false);
+        btnEditar.setEnabled(false);
+        btnSalvar.setEnabled(true);
+        btnDeletar.setEnabled(false);
+        btnCancelar.setEnabled(true);
+        btnPesquisar.setEnabled(false);
+        //caixa de textos
+        txtNome.setEnabled(true);
+        txtIdCliente.setEnabled(true);
+        cmbIdentificacao.setEnabled(true);
+        txtNome.setEnabled(true);
+        txtSobrenome.setEnabled(true);
+        txtEndereco.setEnabled(true);
+        txtTelefone.setEnabled(true);
+        cmbCidade.setEnabled(true);
+        DataNascimento.setEnabled(true);
+        
+        novo = false;
+        
+    }
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {
         btnPrimeiro.setEnabled(true);
         btnAnterior.setEnabled(true);
         btnProximo.setEnabled(true);
@@ -633,41 +633,41 @@ public class frmClientes extends javax.swing.JInternalFrame {
         txtTelefone.setEnabled(false);
         cmbCidade.setEnabled(false);
         DataNascimento.setEnabled(false);
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }
 
-    private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroActionPerformed
+    private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {
        cliAtual = 0;
        mostrarRegistro();
-    }//GEN-LAST:event_btnPrimeiroActionPerformed
+    }
 
-    private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
+    private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {
         cliAtual = msDados.numeroClientes() -1;
         mostrarRegistro();
-    }//GEN-LAST:event_btnUltimoActionPerformed
+    }
 
-    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
       mostrarRegistro();
       preencherTabela();
       
-    }//GEN-LAST:event_formInternalFrameOpened
+    }
 
-    private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
+    private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {
         cliAtual++;
         if(  cliAtual == msDados.numeroClientes()) {
              cliAtual = 0;
         }
         mostrarRegistro();
-    }//GEN-LAST:event_btnProximoActionPerformed
+    }
 
-    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
+    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {
         cliAtual --;
        if ( cliAtual == -1) {
             cliAtual = msDados.numeroClientes() -1;
        }
        mostrarRegistro();
-    }//GEN-LAST:event_btnAnteriorActionPerformed
+    }
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {
         String cliente = JOptionPane.showInputDialog("Favor inserir codigo do Cliente");
         if(cliente.equals("")) {
             return;
@@ -679,7 +679,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         }
          cliAtual = pos;
         mostrarRegistro();
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    }
 
     private void mostrarRegistro() {
         txtIdCliente.setText(msDados.getClientes()[cliAtual].getIdCliente());
