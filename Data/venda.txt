@@ -4,3 +4,5 @@
 2|3!Mesa!600!1!600
 2|4!Cadeira!1000!1!1000
 2|5!Suporte!50!1!50
+1|2|Yuri Moura!Yuri Moura!28/03/2023
+2|3!Mesa!600!1!600

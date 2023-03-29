@@ -50,27 +50,35 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="btnPrimeiro" min="-2" pref="43" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnAnterior" min="-2" pref="47" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnProximo" min="-2" pref="42" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnUltimo" min="-2" pref="39" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="btnAdicionar" min="-2" pref="44" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="clienteTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTelefone" min="-2" pref="207" max="-2" attributes="0"/>
-                          <Component id="clienteCidade" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbCidade" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdCliente" min="-2" pref="124" max="-2" attributes="0"/>
+                          <Component id="usuarioIdCliente" min="-2" max="-2" attributes="0"/>
+                          <Component id="clienteEndereco" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEndereco" min="-2" pref="426" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="DataNascimento" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Component id="btnPrimeiro" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnAnterior" min="-2" pref="47" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnProximo" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnUltimo" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="btnAdicionar" min="-2" pref="44" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="clienteTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTelefone" min="-2" pref="207" max="-2" attributes="0"/>
+                                  <Component id="clienteCidade" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbCidade" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="clienteDataNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
@@ -91,32 +99,22 @@
                                           <Component id="cmbIdentificacao" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Component id="DataNascimento" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="56" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtNome" min="-2" pref="225" max="-2" attributes="0"/>
+                                  <Component id="clienteNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="clienteSobrenome" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSobrenome" min="-2" pref="214" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="126" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNome" min="-2" pref="225" max="-2" attributes="0"/>
-                          <Component id="clienteNome" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="clienteSobrenome" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtSobrenome" min="-2" pref="214" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtIdCliente" min="-2" pref="124" max="-2" attributes="0"/>
-                          <Component id="usuarioIdCliente" min="-2" max="-2" attributes="0"/>
-                          <Component id="clienteEndereco" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEndereco" min="-2" pref="426" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace pref="182" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -543,7 +541,7 @@
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="SansSerif" size="24" style="1"/>
+          <Font name="SansSerif" size="20" style="1"/>
         </Property>
       </Properties>
     </Component>

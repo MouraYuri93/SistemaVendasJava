@@ -15,7 +15,8 @@ public class Utilidades {
     }
     
     public static Date stringtoDate(String Data) {
-        SimpleDateFormat formatotexto = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatotexto = new SimpleDateFormat("yyyy-MM-dd");
+
         Date x = null;
         try {
             x = formatotexto.parse(Data);
@@ -25,7 +26,8 @@ public class Utilidades {
     }
     
     public static String formatDate(Date Data) {
-        SimpleDateFormat formatotexto = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatotexto = new SimpleDateFormat("yyyy-MM-dd");
+
         return formatotexto.format(Data);
     }
 

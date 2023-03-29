@@ -84,10 +84,10 @@ public class frmProdutos extends javax.swing.JInternalFrame {
         usuarioSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         usuarioSenha.setText("Anotações:");
 
-        txtPreco.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        txtPreco.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         txtPreco.setEnabled(false);
 
-        txtIdProduto.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        txtIdProduto.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         txtIdProduto.setEnabled(false);
 
         txtDescricao.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N

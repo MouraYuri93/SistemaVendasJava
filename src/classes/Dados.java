@@ -32,7 +32,7 @@ public class Dados {
         
     }
     
-    public int getNumeroVenda() {
+    public int getNumeroFatura() {
         return numFatura;
     }
     

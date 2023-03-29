@@ -4,9 +4,7 @@ import classes.Dados;
 import classes.Opcoes;
 import classes.Produto;
 import classes.Utilidades;
-import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import javax.swing.JLabel;
@@ -91,10 +89,10 @@ public class frmFatura extends javax.swing.JInternalFrame {
         faturaQuantidade.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         faturaQuantidade.setText("Quantidade:");
 
-        txtData.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        txtData.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         txtData.setEnabled(false);
 
-        txtQuantidade.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        txtQuantidade.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
 
         faturaTotal2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         faturaTotal2.setText("Quantidade Total:");
@@ -102,15 +100,15 @@ public class frmFatura extends javax.swing.JInternalFrame {
         faturaValor1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         faturaValor1.setText("Valor Total:");
 
-        txtValorTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        txtValorTotal.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         txtValorTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtValorTotal.setEnabled(false);
 
-        txtQuantiTotal.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        txtQuantiTotal.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         txtQuantiTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtQuantiTotal.setEnabled(false);
 
-        tblDetalhes.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        tblDetalhes.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         tblDetalhes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -127,7 +125,7 @@ public class frmFatura extends javax.swing.JInternalFrame {
         faturaCliente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         faturaCliente.setText("Cliente:");
 
-        cmbCliente.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        cmbCliente.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
         btnPesquisarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pesquisar48.png"))); // NOI18N
         btnPesquisarCli.setToolTipText("Pesquisar");
@@ -135,13 +133,18 @@ public class frmFatura extends javax.swing.JInternalFrame {
         faturaProduto.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         faturaProduto.setText("Produto:");
 
-        cmbProduto.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        cmbProduto.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
 
         btnPesquisarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pesquisar48.png"))); // NOI18N
         btnPesquisarPro.setToolTipText("Pesquisar");
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/excluir-48.png"))); // NOI18N
         btnExcluir.setToolTipText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/deletar48.png"))); // NOI18N
         btnDeletar.setToolTipText("Deletar");
@@ -297,53 +300,58 @@ public class frmFatura extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        if(cmbCliente.getSelectedIndex()==0) {
+        // Verifica se um cliente foi selecionado
+        if(cmbCliente.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Favor selecionar um cliente");
             cmbCliente.requestFocusInWindow();
             return;
         }
-
-        if(cmbProduto.getSelectedIndex()==0) {
+        // Verifica se um produto foi selecionado
+        if(cmbProduto.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Favor selecionar um produto");
             cmbProduto.requestFocusInWindow();
             return;
         }
-
+        // Verifica se a quantidade inserida é válida
         if(txtQuantidade.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Favor inserir uma Quantidade!");
             txtQuantidade.requestFocusInWindow();
             return;
         }
-
+        // Verifica se a quantidade inserida é numérica
         if(!Utilidades.isNumeric(txtQuantidade.getText())) {
-           JOptionPane.showMessageDialog(rootPane, "Favor inserir somente numeros");
-           txtQuantidade.setText("");
-           txtQuantidade.requestFocusInWindow();
-           return; 
+            JOptionPane.showMessageDialog(rootPane, "Favor inserir somente numeros");
+            txtQuantidade.setText("");
+            txtQuantidade.requestFocusInWindow();
+            return; 
         }
-
+        // Converte a quantidade para inteiro
         int quantidade = Integer.parseInt(txtQuantidade.getText());
+        // Verifica se a quantidade é maior que zero
         if(quantidade <= 0) {
             JOptionPane.showMessageDialog(rootPane,"Favor inserir numeros acima de zero");
             txtQuantidade.requestFocusInWindow();
             txtQuantidade.setText("");
             return;
         }
-
+        // Obtém o produto selecionado
         int pos = cmbProduto.getSelectedIndex() - 1;
-            Produto produto = msDados.getProdutos()[pos];
-
+        Produto produto = msDados.getProdutos()[pos];
+        // Cria um registro a ser adicionado na tabela
         String registro[] = new String[5];
         registro[0] = produto.getIdProduto();
         registro[1] = produto.getDescricao();
         registro[2] = String.valueOf(produto.getPreco());
         registro[3] = txtQuantidade.getText();
         registro[4] = String.valueOf(Integer.parseInt(txtQuantidade.getText()) * produto.getPreco());
+        // Adiciona o registro na tabela
         mTabela.addRow(registro);
-
+        // Limpa os campos de seleção e quantidade
         cmbProduto.setSelectedIndex(0);
         txtQuantidade.setText("");
+        // Coloca o foco na seleção de produtos
         cmbProduto.requestFocusInWindow();
+        // Recalcula os totais
         totais();
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
@@ -366,7 +374,7 @@ public class frmFatura extends javax.swing.JInternalFrame {
             return;
         }
 
-        int numVenda = msDados.getNumeroVenda()+1;
+        int numVenda = msDados.getNumeroFatura()+1;
         FileWriter fw = null;
         PrintWriter pw = null;
         try {
@@ -417,6 +425,31 @@ public class frmFatura extends javax.swing.JInternalFrame {
         limparTabela();
         totais();
     }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // Verifica se algum produto foi selecionado na tabela
+        int row = tblDetalhes.getSelectedRow();
+        if (row < 0) {
+        JOptionPane.showMessageDialog(rootPane, "Selecione um produto na tabela para excluí-lo.");
+        return;
+        }
+        // Pega o ID do produto selecionado na tabela
+        DefaultTableModel modelo = (DefaultTableModel) tblDetalhes.getModel();
+        String idTabela = Utilidades.objectToString(modelo.getValueAt(row, 0));
+        // Percorre a tabela e remove a linha com o ID do produto selecionado
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            String id = Utilidades.objectToString(modelo.getValueAt(i, 0));
+            if (id.equals(idTabela)) {
+                modelo.removeRow(i);
+                break;
+            }
+        }
+        // Limpa o campo de txtValorTotal
+        txtValorTotal.setText("");
+
+        // Atualiza o campo de txtQuantiTotal
+        totais();
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
