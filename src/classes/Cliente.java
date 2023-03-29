@@ -8,7 +8,7 @@ public class Cliente {
     private int idTipo;
     private String nome;
     private String sobrenome;
-    private String logradouro;
+    private String endereço;
     private String telefone;
     private int idCidade;
     private Date dataNascimento;
@@ -18,7 +18,7 @@ public class Cliente {
         this.idTipo = idTipo;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.logradouro = endereço;
+        this.endereço = endereço;
         this.telefone = telefone;
         this.idCidade = idCidade;
         this.dataNascimento = dataNascimento;
@@ -56,12 +56,12 @@ public class Cliente {
         this.sobrenome = sobrenome;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getEndereço() {
+        return endereço;
     }
 
-    public void setLogradouro(String endereço) {
-        this.logradouro = endereço;
+    public void setEndereço(String endereço) {
+        this.endereço = endereço;
     }
 
     public String getTelefone() {
@@ -95,7 +95,7 @@ public class Cliente {
               + idTipo +"!"
               + nome +"!"
               + sobrenome +"!"
-              + logradouro +"!"
+              + endereço +"!"
               + telefone +"!"
               + idCidade +"!"
               + Utilidades.formatDate(dataNascimento);

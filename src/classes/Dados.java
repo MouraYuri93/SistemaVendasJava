@@ -188,7 +188,7 @@ public String editarCliente(Cliente mCliente, int pos) {
     msClientes [pos].setIdCliente(mCliente.getIdCliente());
     msClientes [pos].setNome(mCliente.getNome());
     msClientes [pos].setSobrenome(mCliente.getSobrenome());
-    msClientes [pos].setLogradouro(mCliente.getLogradouro());
+    msClientes [pos].setEndereço(mCliente.getEndereço());
     msClientes [pos].setTelefone(mCliente.getTelefone());
     msClientes [pos].setIdCidade(mCliente.getIdCidade());
     msClientes [pos].setDataNascimento(mCliente.getDataNascimento());
