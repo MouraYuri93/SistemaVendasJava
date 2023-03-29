@@ -2,10 +2,16 @@ package formularios;
 
 import classes.Dados;
 import classes.Cliente;
-import static classes.Utilidades.formatDate;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.swing.text.MaskFormatter;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -459,54 +465,78 @@ public class frmClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(txtIdCliente.getText().equals(" ")) {
+        // Verifica se o campo de ID do cliente foi preenchido
+        if(txtIdCliente.getText().equals(" ")) {            
             JOptionPane.showMessageDialog(rootPane, "Favor inserir um número de ID do cliente");
-            txtIdCliente.requestFocusInWindow();
-            return;
+            txtIdCliente.requestFocusInWindow(); // Coloca o foco no campo de ID do cliente
+            return; // Sai do método
         }
-        
-        if(cmbIdentificacao.getSelectedIndex() == 0) {
+
+        // Verifica se o campo de ID de identificação não foi selecionado
+        if(cmbIdentificacao.getSelectedIndex() == 0) {            
             JOptionPane.showMessageDialog(rootPane,"Favor selecionar ID de identificação");
-            cmbIdentificacao.requestFocusInWindow();
-            return;
+            cmbIdentificacao.requestFocusInWindow(); // Coloca o foco no campo de ID de identificação
+            return; // Sai do método
         }
         
+        // Verifica se o campo de cidade não foi selecionado
         if(cmbCidade.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane,"Favor selecionar uma cidade");
-            cmbCidade.requestFocusInWindow();
-            return;
+            cmbCidade.requestFocusInWindow(); // Coloca o foco no campo de cidade
+            return; // Sai do método
         }
-        
+
+        // Verifica se o campo de nome está vazio
         if(txtNome.getText().equals(" ")) {
             JOptionPane.showMessageDialog(rootPane,"Favor inserir um nome");
-            txtNome.requestFocusInWindow();
-            return;
+            txtNome.requestFocusInWindow(); // Coloca o foco no campo de nome
+            return; // Sai do método
         }
-        
-        if(txtSobrenome.getText().equals(" ")) {
+
+        // Verifica se o campo de sobrenome está vazio
+        if(txtSobrenome.getText().equals(" ")) {            
             JOptionPane.showMessageDialog(rootPane,"Favor inserir um sobrenome");
-            txtSobrenome.requestFocusInWindow();
-            return;
+            txtSobrenome.requestFocusInWindow(); // Coloca o foco no campo de sobrenome
+            return; // Sai do método
         }
         
-        if(txtEndereco.getText().equals(" ")) {
+        // Verifica se o campo de endereço está vazio
+        if(txtEndereco.getText().equals(" ")) {            
             JOptionPane.showMessageDialog(rootPane,"Favor inserir um Endereço");
-            txtEndereco.requestFocusInWindow();
-            return;
+            txtEndereco.requestFocusInWindow(); // Coloca o foco no campo de endereço
+            return; // Sai do método
         }
         
-        if(txtTelefone.getText().equals(" ")) {
-            JOptionPane.showMessageDialog(rootPane,"Favor inserir um número de Telefone");
-            txtTelefone.requestFocusInWindow();
-            return;
-        }
-        
+        String telefone = txtTelefone.getText();
+        telefone = telefone.replaceAll("[^0-9]", ""); // remove todos os caracteres que não são números
+
+        try {
+            MaskFormatter formatter = new MaskFormatter("(##)#####-####");
+            formatter.setValueContainsLiteralCharacters(false); // permite que o valor seja formatado
+            String telefoneFormatado = formatter.valueToString(telefone); // formata o número de telefone
+
+            // Salva o número de telefone formatado no campo txtTelefone
+            txtTelefone.setText(telefoneFormatado);
+
+            // Salva o número de telefone formatado no arquivo cliente.txt
+            PrintWriter writer = new PrintWriter(new FileWriter("Data/clientes.txt", true));
+            writer.println(telefoneFormatado);
+            writer.close();
+        } catch (ParseException ex) {
+            // Trata o erro de formatação do número de telefone
+            JOptionPane.showMessageDialog(null, "Erro ao formatar o número de telefone: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            Logger.getLogger(frmClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
+        // Verifica se a data de nascimento é válida (não pode ser no futuro)
         if(DataNascimento.getDate().after(new Date())) {
            JOptionPane.showMessageDialog(rootPane,"Favor inserir uma data de nascimento");
             DataNascimento.requestFocusInWindow();
             return; 
         }
         
+        // Verificar se o cliente já existe na lista de clientes
         int pos = msDados.posicaoCliente(txtIdCliente.getText());
         if(novo) {
             if(pos != -1) {
@@ -522,6 +552,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
             }
         }
         
+        // Criar um objeto Cliente com as informações inseridas no formulário
         Cliente mCliente = new Cliente(
                 txtIdCliente.getText(), 
                 cmbIdentificacao.getSelectedIndex(), 
@@ -532,13 +563,16 @@ public class frmClientes extends javax.swing.JInternalFrame {
                 cmbCidade.getSelectedIndex(), 
                 DataNascimento.getDate());
         String msg;
+        // Adicionar ou editar o cliente na lista de clientes, dependendo do botão pressionado
         if(novo) {
             msg = msDados.adicionarCliente(mCliente);
         }else {
             msg = msDados.editarCliente(mCliente, pos);
         }
+        // Exibir uma mensagem com o resultado da operação
         JOptionPane.showMessageDialog(rootPane, msg);
         
+        // Habilitar os botões necessários e desabilitar os campos do formulário
         btnPrimeiro.setEnabled(true);
         btnAnterior.setEnabled(true);
         btnProximo.setEnabled(true);
@@ -549,7 +583,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         btnDeletar.setEnabled(true);
         btnCancelar.setEnabled(false);
         btnPesquisar.setEnabled(true);
-        //desabilitar os campos
+        // Desabilitar os campos do formulário
         txtIdCliente.setEnabled(false);
         txtNome.setEnabled(false);
         txtIdCliente.setEnabled(false);
@@ -560,7 +594,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         txtTelefone.setEnabled(false);
         cmbCidade.setEnabled(false);
         DataNascimento.setEnabled(false);
-        
+        // Atualizar a tabela de clientes
         preencherTabela();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -706,7 +740,6 @@ public class frmClientes extends javax.swing.JInternalFrame {
         SimpleDateFormat formatotexto = new SimpleDateFormat("dd/MM/yyyy");
         return formatotexto.format(newData);
     }
-
     
     private String tipoID(int id) {
         switch(id) {
