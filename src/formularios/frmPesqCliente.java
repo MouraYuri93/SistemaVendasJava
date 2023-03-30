@@ -1,7 +1,6 @@
 package formularios;
 
 import classes.Dados;
-import static formularios.frmClientes.formatDate;
 import javax.swing.table.DefaultTableModel;
 
 public class frmPesqCliente extends javax.swing.JDialog {
@@ -14,60 +13,73 @@ public class frmPesqCliente extends javax.swing.JDialog {
     }
     
     private void preencherTabela() {
+        // Vetor com os títulos das colunas da tabela
         String titulos[] = {"ID Cliente", "Tipo Identificação", "Nome"};
+        // Vetor que vai armazenar os dados de cada registro da tabela
         String registro[] = new String[3];
+        // Criação do modelo de tabela com os títulos das colunas
         mTabela = new DefaultTableModel(null, titulos);
+        // Verifica se o campo de pesquisa está vazio
         if(txtPesqCli.getText().equals("")) {
+           // Se estiver, adiciona todos os registros da lista na tabela
            for(int i = 0; i < msDados.numeroClientes(); i++) {
                registro[0] = msDados.getClientes()[i].getIdCliente();
-               registro[1] = msDados.getClientes()[i].getNome();
-               registro[2] = tipoID(msDados.getClientes()[i].getIdTipo());
+               registro[1] = tipoID(msDados.getClientes()[i].getIdTipo());
+               registro[2] = msDados.getClientes()[i].getNome();
                mTabela.addRow(registro);
-               
-               tblTabela.setModel(mTabela);
-               return;
-               }
            }
-        
+           // Define o modelo da tabela
+           tblTabela.setModel(mTabela);
+           return;
+        }
+
+        // Verifica se o radioId está selecionado
         if(radioId.isSelected()){
+            // Se estiver, adiciona os registros cujo ID começa com o texto digitado no campo de pesquisa
             for(int i = 0; i < msDados.numeroClientes(); i++) {
                 if(msDados.getClientes()[i].getIdCliente().startsWith(txtPesqCli.getText())){
                     registro[0] = msDados.getClientes()[i].getIdCliente();
-                    registro[1] = msDados.getClientes()[i].getNome();
-                    registro[2] = tipoID(msDados.getClientes()[i].getIdTipo());
+                    registro[1] = tipoID(msDados.getClientes()[i].getIdTipo());
+                    registro[2] = msDados.getClientes()[i].getNome();
                     mTabela.addRow(registro);
-                    }
                 }
+            }
+            // Define o modelo da tabela
             tblTabela.setModel(mTabela);
             return;
         }
-        
+
+        // Verifica se o radioNome está selecionado
         if(radioNome.isSelected()){
+            // Se estiver, adiciona os registros cujo Nome começa com o texto digitado no campo de pesquisa
             for(int i = 0; i < msDados.numeroClientes(); i++) {
                 if(msDados.getClientes()[i].getNome().startsWith(txtPesqCli.getText())){
                     registro[0] = msDados.getClientes()[i].getIdCliente();
-                    registro[1] = msDados.getClientes()[i].getNome();
-                    registro[2] = tipoID(msDados.getClientes()[i].getIdTipo());
+                    registro[1] = tipoID(msDados.getClientes()[i].getIdTipo());
+                    registro[2] = msDados.getClientes()[i].getNome();
                     mTabela.addRow(registro);
-                    }
                 }
+            }
+            // Define o modelo da tabela
             tblTabela.setModel(mTabela);
             return;
         }
-        
+
+        // Verifica se o radioIden está selecionado
         if(radioIden.isSelected()){
+            // Se estiver, adiciona os registros cujo Tipo Identificação começa com o texto digitado no campo de pesquisa
             for(int i = 0; i < msDados.numeroClientes(); i++) {
-                if(String.valueOf(msDados.getClientes()[i].getIdTipo()).startsWith(txtPesqCli.getText())){
+                if(String.valueOf(msDados.getClientes()[i].getIdTipo()).toLowerCase().contains(txtPesqCli.getText().toLowerCase())){
                     registro[0] = msDados.getClientes()[i].getIdCliente();
-                    registro[1] = msDados.getClientes()[i].getNome();
-                    registro[2] = tipoID(msDados.getClientes()[i].getIdTipo());
+                    registro[1] = tipoID(msDados.getClientes()[i].getIdTipo());
+                    registro[2] = msDados.getClientes()[i].getNome();
                     mTabela.addRow(registro);
                     }
                 }
+            // Define o modelo da tabela
             tblTabela.setModel(mTabela);
             return;
-        }
-                
+        }          
     }
     
     private String tipoID(int id) {
