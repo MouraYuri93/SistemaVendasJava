@@ -57,7 +57,7 @@ public class frmPesqCliente extends javax.swing.JDialog {
         
         if(radioIden.isSelected()){
             for(int i = 0; i < msDados.numeroClientes(); i++) {
-                if(msDados.getClientes()[i].getIdTipo().startsWith(txtPesqCli.getIdTipo())){
+                if(String.valueOf(msDados.getClientes()[i].getIdTipo()).startsWith(txtPesqCli.getText())){
                     registro[0] = msDados.getClientes()[i].getIdCliente();
                     registro[1] = msDados.getClientes()[i].getNome();
                     registro[2] = tipoID(msDados.getClientes()[i].getIdTipo());
@@ -149,6 +149,11 @@ public class frmPesqCliente extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tblTabela);
 
         txtPesqCli.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        txtPesqCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesqCliActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cancelar48.png"))); // NOI18N
         jButton1.setToolTipText("Cancelar");
@@ -224,6 +229,10 @@ public class frmPesqCliente extends javax.swing.JDialog {
         txtPesqCli.requestFocusInWindow();
         preencherTabela();
     }//GEN-LAST:event_radioIdenActionPerformed
+
+    private void txtPesqCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesqCliActionPerformed
+        preencherTabela();
+    }//GEN-LAST:event_txtPesqCliActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
