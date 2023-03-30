@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.text.MaskFormatter;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -647,8 +646,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
       mostrarRegistro();
-      preencherTabela();
-      
+      preencherTabela();      
     }
 
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {
@@ -760,8 +758,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         }
     }
     
-
-    
+   
     
     
     

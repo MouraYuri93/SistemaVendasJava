@@ -125,15 +125,20 @@ public class frmFatura extends javax.swing.JInternalFrame {
         faturaCliente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         faturaCliente.setText("Cliente:");
 
-        cmbCliente.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        cmbCliente.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         btnPesquisarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pesquisar48.png"))); // NOI18N
         btnPesquisarCli.setToolTipText("Pesquisar");
+        btnPesquisarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarCliActionPerformed(evt);
+            }
+        });
 
         faturaProduto.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         faturaProduto.setText("Produto:");
 
-        cmbProduto.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        cmbProduto.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         btnPesquisarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pesquisar48.png"))); // NOI18N
         btnPesquisarPro.setToolTipText("Pesquisar");
@@ -450,6 +455,13 @@ public class frmFatura extends javax.swing.JInternalFrame {
         // Atualiza o campo de txtQuantiTotal
         totais();
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnPesquisarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarCliActionPerformed
+        frmPesqCliente mPesqCliente = new frmPesqCliente(null, closable);
+        mPesqCliente.setDados(msDados);
+        mPesqCliente.setLocationRelativeTo(null);
+        mPesqCliente.setVisible(true);
+    }//GEN-LAST:event_btnPesquisarCliActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

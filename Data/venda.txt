@@ -1,8 +1,0 @@
-1|3|Yuri Moura!Yuri Moura!28/03/2023
-2|1!Notebook!5899!1!5899
-2|2!Monitor!1800!1!1800
-2|3!Mesa!600!1!600
-2|4!Cadeira!1000!1!1000
-2|5!Suporte!50!1!50
-1|2|Yuri Moura!Yuri Moura!28/03/2023
-2|3!Mesa!600!1!600
