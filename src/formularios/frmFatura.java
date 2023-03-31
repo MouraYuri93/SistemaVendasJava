@@ -466,39 +466,12 @@ public class frmFatura extends javax.swing.JInternalFrame {
             return;
         }
         for(int i = 0; i < cmbCliente.getItemCount(); i++) {
-            if(((Opcoes)cmbCliente.getItemAt(i)).getValor.equals(rta)) {
+            if(((Opcoes)cmbCliente.getItemAt(i)).getValor().equals(rta)) {
                 cmbCliente.setSelectedIndex(i);
                 return;
-            } else {
             }
         }
     }//GEN-LAST:event_btnPesquisarCliActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdicionar;
-    private javax.swing.JButton btnDeletar;
-    private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnPesquisarCli;
-    private javax.swing.JButton btnPesquisarPro;
-    private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cmbCliente;
-    private javax.swing.JComboBox<String> cmbProduto;
-    private javax.swing.JLabel faturaCliente;
-    private javax.swing.JLabel faturaData;
-    private javax.swing.JLabel faturaProduto;
-    private javax.swing.JLabel faturaQuantidade;
-    private javax.swing.JLabel faturaTotal1;
-    private javax.swing.JLabel faturaTotal2;
-    private javax.swing.JLabel faturaValor;
-    private javax.swing.JLabel faturaValor1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblDetalhes;
-    private javax.swing.JTextField txtData;
-    private javax.swing.JTextField txtQuantiTotal;
-    private javax.swing.JTextField txtQuantidade;
-    private javax.swing.JTextField txtValorTotal;
-    // End of variables declaration//GEN-END:variables
 
     private void preencherTabela() {
         String titulos[] = {"ID Produdo", "Descrição", "Preço", "Qtd", "Valor"};
@@ -536,4 +509,28 @@ public class frmFatura extends javax.swing.JInternalFrame {
         }
     }
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnPesquisarCli;
+    private javax.swing.JButton btnPesquisarPro;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cmbCliente;
+    private javax.swing.JComboBox<String> cmbProduto;
+    private javax.swing.JLabel faturaCliente;
+    private javax.swing.JLabel faturaData;
+    private javax.swing.JLabel faturaProduto;
+    private javax.swing.JLabel faturaQuantidade;
+    private javax.swing.JLabel faturaTotal1;
+    private javax.swing.JLabel faturaTotal2;
+    private javax.swing.JLabel faturaValor;
+    private javax.swing.JLabel faturaValor1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblDetalhes;
+    private javax.swing.JTextField txtData;
+    private javax.swing.JTextField txtQuantiTotal;
+    private javax.swing.JTextField txtQuantidade;
+    private javax.swing.JTextField txtValorTotal;
+    // End of variables declaration//GEN-END:variables
 }

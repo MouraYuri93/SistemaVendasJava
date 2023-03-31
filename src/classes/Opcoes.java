@@ -21,6 +21,5 @@ public class Opcoes {
     public String toString() {
         return descricao;
     }
-    
-        
+      
 }
