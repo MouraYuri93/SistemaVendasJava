@@ -55,7 +55,6 @@ public class frmLogin extends javax.swing.JFrame {
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(0, 0, 60));
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ball_green.png"))); // NOI18N
-        btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -64,8 +63,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         btnSair.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 60));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/boll_cancel.png"))); // NOI18N
-        btnSair.setText("Sair");
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/sair-48.png"))); // NOI18N
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
